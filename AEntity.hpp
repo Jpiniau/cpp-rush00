@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:55:58 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 13:26:13 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 13:55:11 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,17 @@ class   AEntity {
     bool            getIsJustDestroyed(void) const;
 
     //setteurs
-    void            setAppearance(char symbol);
-    void            setX(int value);
-    void            setY(int value);
-    void            setSpeedX(int value);
-    void            setSpeedY(int value);
-    void            setFrameAdvanceX(int value);
-    void            setFrameAdvanceY(int value);
-    void            setHP(int value);
-    void            setArmor(int value);
-    void            setAllegiance(int value);
-    void            setIsJustDestroyed(bool value);
+    void            setAppearance(char const symbol);
+    void            setX(int const value);
+    void            setY(int const value);
+    void            setSpeedX(int const value);
+    void            setSpeedY(int const value);
+    void            setFrameAdvanceX(int const value);
+    void            setFrameAdvanceY(int const value);
+    void            setHP(int const value);
+    void            setArmor(int const value);
+    void            setAllegiance(int const value);
+    void            setIsJustDestroyed(bool const value);
 
 };
 
