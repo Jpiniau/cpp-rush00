@@ -6,17 +6,17 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:09:00 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 18:22:54 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 18:51:00 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef METEOR_HPP
 # define METEOR_HPP
 
-#include "IEnemy.hpp"
+#include "AEnemy.hpp"
 #include "AEntity.hpp"
 
-class Meteor : public AEntity, public IEnemy {
+class Meteor : public AEntity, public AEnemy {
     private:
     public:
     Meteor(void);

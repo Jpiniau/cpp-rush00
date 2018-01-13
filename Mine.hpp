@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:25:50 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 18:07:15 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 18:50:51 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define MINE_HPP
 
 #include "AEntity.hpp"
-#include "IEnemy.hpp"
+#include "AEnemy.hpp"
 #include "Meteor.hpp"
 
-class Mine : public AEntity, public IEnemy {
+class Mine : public AEntity, public AEnemy {
     private:
     public:
     Mine(void);

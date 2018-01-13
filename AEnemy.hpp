@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IEnemy.cpp                                         :+:      :+:    :+:   */
+/*   AEnemy.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/13 15:48:35 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 18:14:46 by vnoon            ###   ########.fr       */
+/*   Created: 2018/01/13 13:21:53 by jpiniau           #+#    #+#             */
+/*   Updated: 2018/01/13 18:50:53 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "IEnemy.hpp"
+#ifndef AEnemy_HPP
+# define AEnemy_HPP
 
-IEnemy::IEnemy(void) {
-    return;
-}
+class AEnemy
+{
+	public :
+		AEnemy(void);
+		AEnemy(AEnemy const & src);
+		virtual	~AEnemy(void) = 0;
 
-IEnemy::IEnemy(IEnemy const & src) {
-    *this = src;
-    return;
-}
+		virtual void	patern(void) = 0;
+		virtual void	setRandSpeed(void) = 0;
+		virtual void	setRandCoord(void) = 0;
+
+		AEnemy const & operator=(AEnemy const &rhs);
+};
+
+#endif

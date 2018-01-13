@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:25:53 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 18:23:58 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 18:50:47 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,17 @@
 #include <cstdlib>
 #include <ctime>
 
-
-Mine::Mine(void) : AEntity('@', 45, 45, 2, 2, 0, 0, 50, 2, 2, false), IEnemy() {
+Mine::Mine(void) : AEntity('@', 45, 45, 2, 2, 0, 0, 50, 2, 2, false), AEnemy() {
     return;
 }
 
-Mine::Mine(Mine const & src) : AEntity(src), IEnemy(src)  {
+Mine::Mine(Mine const & src) : AEntity(src), AEnemy(src)  {
     *this = src;
 }
 
 Mine::~Mine(void) {
     AEntity::~AEntity();
-    IEnemy::~IEnemy();
+    AEnemy::~AEnemy();
 }
 
 Mine &          Mine::operator=(Mine const & rhs) {
@@ -80,7 +79,7 @@ void            Mine::spawnMeteor(void) {
 	while (list->getNext())
 		list = list->getNext();
 
-	meteor = new Meteor(this->getX(), this->getY());
+	meteor = new Meteor();//(this->getX(), this->getY());
 	
 	list->setNext(meteor);
 	meteor->setPrev(list);

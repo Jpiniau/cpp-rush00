@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:12:28 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 18:30:19 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 18:50:44 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 #include <cstdlib>
 #include <ctime>
 
-Meteor::Meteor(void) : AEntity('#', 45, 45, 2, 2, 0, 0, 50, 2, 2, false), IEnemy() {
+Meteor::Meteor(void) : AEntity('#', 45, 45, 2, 2, 0, 0, 50, 2, 2, false), AEnemy() {
     return;
 }
 
-Meteor::Meteor(int x, int y) : AEntity('#', x, y, 2, 2, 0, 0, 50, 2, 2, false), IEnemy() {
+Meteor::Meteor(int x, int y) : AEntity('#', x, y, 2, 2, 0, 0, 50, 2, 2, false), AEnemy() {
     return;
 }
 
-Meteor::Meteor(Meteor const & src) : AEntity(src), IEnemy(src) {
+Meteor::Meteor(Meteor const & src) : AEntity(src), AEnemy(src) {
     *this = src;
 }
 
 Meteor::~Meteor(void) {
     AEntity::~AEntity();
-    IEnemy::~IEnemy();
+    AEnemy::~AEnemy();
 }
 
 void            Meteor::colisionEffect(AEntity const & entity) {
@@ -69,7 +69,7 @@ void            Meteor::setRandCoord(void) {
     this->setSpeedY(74);
 }
 
-Meteor &	Meteor::operator=(Meteor const & rhs)
+Meteor &	Meteor::operator=(Meteor const &rhs)
 {
 	AEntity::operator=(rhs);
 	return (*this);
