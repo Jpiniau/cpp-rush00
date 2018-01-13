@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:36:53 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 19:31:36 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/13 20:15:17 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 class Frame {
     private:
     AEntity         *_ptr;
+    WINDOW			*_win;
 
 
     public:
@@ -34,9 +35,11 @@ class Frame {
 
     //getteurs
     AEntity const & getPtr(void) const;
+    WINDOW *		getWin(void) const;
 
     //setteurs
     void            setPtr(AEntity const & entity);
+    void            setWin(WINDOW * win);
 };
 
 
