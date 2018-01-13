@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:12:28 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 18:50:44 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 19:04:59 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,13 @@ Meteor::~Meteor(void) {
     AEnemy::~AEnemy();
 }
 
-void            Meteor::colisionEffect(AEntity const & entity) {
+void            Meteor::colisionEffect(AEntity ** entity) {
+    AEntity *ptr;
+
+    ptr = *entity;
+    ptr->getNext()->setPrev(ptr->getPrev());
+    ptr->getPrev()->setNext(ptr->getNext());
+    delete entity;
     return;
 }
 

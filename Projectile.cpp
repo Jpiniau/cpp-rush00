@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:23:29 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 16:53:44 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 19:05:18 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ Projectile &Projectile::operator=(Projectile const & rhs)
     return (*this);
 }
 
-void            Projectile::colisionEffect(AEntity const & entity) {
+void            Projectile::colisionEffect(AEntity ** entity) {
     return;
 }
 

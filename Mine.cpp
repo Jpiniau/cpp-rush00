@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:25:53 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 18:50:47 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 19:09:51 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ Mine::Mine(Mine const & src) : AEntity(src), AEnemy(src)  {
 }
 
 Mine::~Mine(void) {
+    if (this->getX() >= 0 && this->getX() < 75 && this->getY() >= 0 && this->getY() < 0)
+        this->spawnMeteor();
     AEntity::~AEntity();
     AEnemy::~AEnemy();
 }
@@ -33,7 +35,13 @@ Mine &          Mine::operator=(Mine const & rhs) {
     return (*this);
 }
 
-void            Mine::colisionEffect(AEntity const & entity) {
+void            Mine::colisionEffect(AEntity ** entity) {
+    AEntity *ptr;
+
+    ptr = *entity;
+    ptr->getNext()->setPrev(ptr->getPrev());
+    ptr->getPrev()->setNext(ptr->getNext());
+    delete entity;
     return;
 }
 
@@ -79,7 +87,7 @@ void            Mine::spawnMeteor(void) {
 	while (list->getNext())
 		list = list->getNext();
 
-	meteor = new Meteor();//(this->getX(), this->getY());
+	meteor = new Meteor(this->getX(), this->getY()));
 	
 	list->setNext(meteor);
 	meteor->setPrev(list);

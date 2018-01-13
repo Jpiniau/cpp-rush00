@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:55:58 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 17:53:53 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 19:06:01 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ class   AEntity {
     AEntity &       operator=(AEntity const &rhs);
     AEntity         *colideWith(void);
 
-    virtual void    colisionEffect(AEntity const &entity) = 0;
+    virtual void    colisionEffect(AEntity ** entity) = 0;
     virtual void    move(void) = 0;
 
     //getteurs

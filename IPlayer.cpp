@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 16:10:38 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 16:24:08 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 18:53:32 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,6 @@ IPlayer::IPlayer(void) {
 }
 
 IPlayer::IPlayer(IPlayer const & src) {
+    *this = src;
     return;
 }
