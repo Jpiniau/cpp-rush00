@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Projectile.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpiniau <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:08:54 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 15:16:21 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/13 15:31:02 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,22 @@
 
 #include "AEntity.hpp"
 
-class Projectile
+class Projectile : public AEntity
 {
 	public :
 		Projectile(void);
 		Projectile(Projectile & const src);
+		Projectile(char appearence, int x, int y, int speedX, int speedY,
+					int frameAdvanceX, int frameAdvanceY, int hp, int armor,
+					int allegiance, bool isJustDestroyed, int damage, int range);
 		Projectile(int damage, int range);
 		~Projectile(void);
 
 		Projectile &	operator=(Projectile & const rhs);
-		int				getDamage(void);
-		int				getRange(void);
-		int				setDamage(int value);
-		int				setRange(int value);
+		int				getDamage(void) const;
+		int				getRange(void) const;
+		void			setDamage(int value);
+		void			setRange(int value);
 
 	private :
 		int	_damage;

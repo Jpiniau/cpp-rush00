@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   Projectile.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpiniau <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:23:29 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 14:50:09 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/13 15:31:48 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Projectile.hpp"
 
-Projectile::Projectile(void) : AEntity(void)
+Projectile::Projectile(void) : AEntity()
 {
     return;
 }
 
-Projectile::Projectile(Projectile &const src) : Aentity(src)
+Projectile::Projectile(Projectile &const src) : AEntity(src)
 {
     *this = src;
 }
@@ -25,12 +25,9 @@ Projectile::Projectile(Projectile &const src) : Aentity(src)
 Projectile::Projectile(char appearence, int x, int y, int speedX, int speedY,
 					   int frameAdvanceX, int frameAdvanceY, int hp, int armor,
 					   int allegiance, bool isJustDestroyed, int damage, int range) :
-					   _appearance(appearence), _x(x), _y(y), _speedX(speedX), _speedY(speedY),
-					   _frameAdvanceX(frameAdvanceX), _frameAdvanceX(frameAdvanceX), _hp(hp),
-					   _armor(armor), _allegiance(qllegiance), _isJustDestroyed(isJustDestroyed)
+                       AEntity(appearence, x, y, speedX, speedY, frameAdvanceX, frameAdvanceY,
+                       hp, armor, allegiance, isJustDestroyed), _damage(damage), _range(range)
 {
-	this->_damage = damage;
-	this->range = range;
     return;
 }
 
@@ -41,6 +38,7 @@ Projectile::~Projectile(void)
 
 Projectile &Projectile::operator=(Projectile &const rhs)
 {
+    AEntity::operator=(rhs);
     this->setDamage(rhs.getDamage());
     this->setRange(rhs.getRange());
     return (*this);
@@ -53,7 +51,7 @@ int Projectile::getDamage(void) const
 
 int Projectile::getRange(void) const
 {
-	return (this->_Range);
+	return (this->_range);
 }
 
 void Projectile::setDamage(int const value)

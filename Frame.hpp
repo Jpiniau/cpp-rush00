@@ -6,12 +6,12 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:36:53 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 15:06:00 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 15:20:11 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRAME_HPP
-# define FRANE_HPP
+# define FRAME_HPP
 
 #include "AEntity.hpp"
 

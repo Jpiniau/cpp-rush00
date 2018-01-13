@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:12:28 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 15:08:25 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 15:11:36 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Meteor::Meteor(void) : AEntity('#', 45, 45, 2, 2, 0, 0, 50, 2, 2, false), IEnemy
     return;
 }
 
-Meteor::Meteor(Meteor & const src) : AEntity(src), IEnemu(src) {
+Meteor::Meteor(Meteor & const src) : AEntity(src), IEnemy(src) {
     *this = src;
 }
 
