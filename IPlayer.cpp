@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   IPlayer.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpiniau <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 16:10:38 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 16:11:08 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/13 16:24:08 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Iplayer.hpp"
+#include "IPlayer.hpp"
 
 IPlayer::IPlayer(void) {
     return;
 }
 
-IPlayer::IPlayer(IPlayer & const src) {
+IPlayer::IPlayer(IPlayer const & src) {
     return;
 }

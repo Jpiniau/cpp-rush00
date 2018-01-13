@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Iplayer.hpp                                        :+:      :+:    :+:   */
+/*   IPlayer.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpiniau <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 13:08:06 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 16:12:08 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/13 16:23:53 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@
 class IPlayer
 {
 	public :
-		IPlayer(void) const = 0;
-		virtual	~IPlayer(void) const = 0;
+		IPlayer(void);
+		IPlayer(IPlayer const & src);
+		virtual	~IPlayer(void) = 0;
 
 		virtual int*	detectInput(void) const = 0;
 		virtual void	setCoord(void) = 0;
+
+		virtual IPlayer &	operator=(IPlayer const & rhs) = 0;
 
 };
 
