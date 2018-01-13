@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   IEnemy.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpiniau <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 13:21:53 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 15:05:38 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/13 15:10:16 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ class IEnemy
 		virtual void	patern(void) const = 0;
 		virtual void	setRandSpeed(void) const = 0;
 		virtual void	setRandCoord(void) const = 0;
-}
+};
 
 #endif
