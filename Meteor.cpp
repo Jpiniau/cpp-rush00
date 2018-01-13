@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:12:28 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 16:07:59 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 17:37:08 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@ void            Meteor::colisionEffect(AEntity const & entity) {
 }
 
 void            Meteor::move(void) {
+    int frame_advancementX = this->getFrameAdvanceX() + this->getSpeedX();
+    int frame_advancementY = this->getFrameAdvanceY() + this->getSpeedY();
+
+    if (ABS(frame_advancementX) >= this->getFrameRate()) {
+        this->setX(this->getX() + SIGNE(frame_advancementX));
+    }
+    if (ABS(frame_advancementY) >= this->getFrameRate()) {
+        this->setY(this->getY() + SIGNE(frame_advancementY));
+    }
     return;
 }
 

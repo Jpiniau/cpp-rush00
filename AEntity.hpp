@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:55:58 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 17:23:31 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 17:34:29 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ class   AEntity {
     AEntity             *_prev;
 
     protected:
+    #define ABS(val) val < 0 ? -val : val 
+    #define SIGNE(val)  val < 0 ? -1 : 1 
+
     static const int    _frameRate;
     AEntity(void);
     AEntity(AEntity const &src);

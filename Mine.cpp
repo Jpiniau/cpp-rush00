@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:25:53 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 16:11:54 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 17:37:35 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,15 @@ void            Mine::colisionEffect(AEntity const & entity) {
 }
 
 void            Mine::move(void) {
+    int frame_advancementX = this->getFrameAdvanceX() + this->getSpeedX();
+    int frame_advancementY = this->getFrameAdvanceY() + this->getSpeedY();
+
+    if (ABS(frame_advancementX) >= this->getFrameRate()) {
+        this->setX(this->getX() + SIGNE(frame_advancementX));
+    }
+    if (ABS(frame_advancementY) >= this->getFrameRate()) {
+        this->setY(this->getY() + SIGNE(frame_advancementY));
+    }
     return;
 }
 
