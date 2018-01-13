@@ -6,7 +6,7 @@
 /*   By: jpiniau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:33:50 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 15:16:05 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/13 15:51:34 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,18 @@ BaseShip::~BaseShip(void)
 
 void	BaseShip::shoot(void)
 {
-	new projectile("-", this->x + 1, this->y, 3, 0, 0, 0, 0, 0, 0, 0, 10, 20);
+	Projectile	proj;
+	AEntity		list;
+
+	list = this;
+	while (list->next)
+		list = getNext();
+
+	proj = new Projectile("-", this->x + 1, this->y, 3, 0, 0, 0, 0, 0, 0, 0, 10, 20);
+	
+	list.setNext(proj);
+	proj.setPrev(list);
+	proj.setNext(NULL)
 	return;
 }
 
