@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:27:17 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 16:57:17 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 17:58:53 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class BaseShip : public ISpaceShip, public IPlayer, public AEntity
 		void	shoot(void);
 		void	detectInput(void);
 		void	setCoord(void);
+		void	move(void);
 
 		void	setCH(int *ch, int len);
 		int		*getCH(void);
