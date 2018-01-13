@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BaseShip.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpiniau <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:33:50 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 16:27:51 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/13 16:54:26 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,21 @@ BaseShip::~BaseShip(void)
 
 void	BaseShip::shoot(void)
 {
-	Projectile	proj;
-	AEntity		list;
+	Projectile	*proj;
+	AEntity		*list;
 
 	list = this;
-	while (list->next)
-		list = list.getNext();
+	while (list->getNext())
+		list = list->getNext();
 
-	proj = new Projectile("-", this->_x + 1, this->_y, 3, 0, 0, 0, 0, 0, 0, 0, 10, 20);
+	proj = new Projectile('-', this->getX() + 1, this->getY(), 3, 0, 0, 0, 0, 0, 0, 0, 10, 20); //Projectile('-', this->getX() + 1, this->getY(), 3, 0, 0, 0, 0, 0, 0, 0, 10, 20);
 	
-	list.setNext(proj);
-	proj.setPrev(list);
-	proj.setNext(NULL)
-	return;
+	list->setNext(*proj);
+	proj->setPrev(*list);
+//	proj->setNext(NULL);
 }
 
-int *	BaseShip::detectInput(void)
+void	BaseShip::detectInput(void)
 {
 	int		ch[4];
 	int		i;
@@ -54,7 +53,7 @@ int *	BaseShip::detectInput(void)
 	{
 		ch[i] = getch();
 	}
-	return (ch);
+	this->setCH(ch, i);
 }
 
 void	BaseShip::setCoord(void)
@@ -68,4 +67,13 @@ BaseShip &	BaseShip::operator=(BaseShip const & rhs)
 {
 	AEntity::operator=(rhs);
 	return (*this);
+}
+
+void		BaseShip::setCH(int	*ch, int len) {
+	while (--len > 0)
+		this->_ch[len] = ch[len];
+}
+
+int		 *BaseShip::getCH(void) {
+	return ((this->_ch));
 }

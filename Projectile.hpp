@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:08:54 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 16:12:33 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 16:53:07 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ class Projectile : public AEntity
 		int				getRange(void) const;
 		void			setDamage(int value);
 		void			setRange(int value);
+
+    	void            colisionEffect(AEntity const & entity);
+    	void            move(void);
 
 	private :
 		int	_damage;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BaseShip.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpiniau <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:27:17 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 16:26:45 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/13 16:57:17 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 #include "IPlayer.hpp"
 #include "Projectile.hpp"
 #include <ncurses.h>
+#include <cstddef>
 
-class BaseShip : public ISpaceShip, public IPlayer
+class BaseShip : public ISpaceShip, public IPlayer, public AEntity
 {
 	public :
 		BaseShip(void);
@@ -26,8 +27,16 @@ class BaseShip : public ISpaceShip, public IPlayer
 		~BaseShip(void);
 		
 		void	shoot(void);
-		int *	detectInput(void);
+		void	detectInput(void);
 		void	setCoord(void);
+
+		void	setCH(int *ch, int len);
+		int		*getCH(void);
+
+		BaseShip &	operator=(BaseShip const & rhs);
+
+	private:
+		int		_ch[4];
 };
 
 #endif

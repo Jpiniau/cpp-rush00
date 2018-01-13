@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:23:29 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 16:13:00 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 16:53:44 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ Projectile &Projectile::operator=(Projectile const & rhs)
     this->setDamage(rhs.getDamage());
     this->setRange(rhs.getRange());
     return (*this);
+}
+
+void            Projectile::colisionEffect(AEntity const & entity) {
+    return;
+}
+
+void            Projectile::move(void) {
+    return;
 }
 
 int Projectile::getDamage(void) const
