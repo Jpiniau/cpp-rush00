@@ -6,18 +6,18 @@
 /*   By: jpiniau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:33:50 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 15:51:34 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/13 16:27:51 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BaseShip.hpp"
 
-BaseShip::BaseShip(void) : ISpaceShip(void), IPlayer(void)
+BaseShip::BaseShip(void) : ISpaceShip(), IPlayer()
 {
     return;
 }
 
-BaseShip::BaseShip(BaseShip &const src) : ISpaceShip(src), IPlayer(src)
+BaseShip::BaseShip(BaseShip const & src) : ISpaceShip(src), IPlayer(src)
 {
     *this = src;
 }
@@ -34,9 +34,9 @@ void	BaseShip::shoot(void)
 
 	list = this;
 	while (list->next)
-		list = getNext();
+		list = list.getNext();
 
-	proj = new Projectile("-", this->x + 1, this->y, 3, 0, 0, 0, 0, 0, 0, 0, 10, 20);
+	proj = new Projectile("-", this->_x + 1, this->_y, 3, 0, 0, 0, 0, 0, 0, 0, 10, 20);
 	
 	list.setNext(proj);
 	proj.setPrev(list);
@@ -57,15 +57,15 @@ int *	BaseShip::detectInput(void)
 	return (ch);
 }
 
-void	BaseShip::SetCoord(void)
+void	BaseShip::setCoord(void)
 {
 	this->setX(5);
 	this->setY(5);
 	return;
 }
 
-BaseShip &	BaseShip::operator=(BaseShip & const rhs)
+BaseShip &	BaseShip::operator=(BaseShip const & rhs)
 {
-	Aentity::operator=(rhs);
+	AEntity::operator=(rhs);
 	return (*this);
 }
