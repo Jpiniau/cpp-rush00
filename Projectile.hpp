@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:08:54 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 19:05:17 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 19:23:48 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 class Projectile : public AEntity
 {
+	#define CALC_DAMAGE(damage, armor) (damage <= armor ? 1 : damage - armor)
 	public :
 		Projectile(void);
 		Projectile(Projectile const & src);

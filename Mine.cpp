@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:25:53 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 19:09:51 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 19:25:33 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,14 @@ Mine &          Mine::operator=(Mine const & rhs) {
 }
 
 void            Mine::colisionEffect(AEntity ** entity) {
-    AEntity *ptr;
+/*    AEntity *ptr;
 
     ptr = *entity;
     ptr->getNext()->setPrev(ptr->getPrev());
     ptr->getPrev()->setNext(ptr->getNext());
-    delete entity;
+    delete entity;*/
+    (*entity)->setIsJustDestroyed(true);
+    this->setIsJustDestroyed(true);
     return;
 }
 
@@ -87,7 +89,7 @@ void            Mine::spawnMeteor(void) {
 	while (list->getNext())
 		list = list->getNext();
 
-	meteor = new Meteor(this->getX(), this->getY()));
+	meteor = new Meteor(this->getX(), this->getY());
 	
 	list->setNext(meteor);
 	meteor->setPrev(list);

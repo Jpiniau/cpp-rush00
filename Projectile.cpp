@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:23:29 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 19:05:18 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 19:25:06 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,16 @@ Projectile &Projectile::operator=(Projectile const & rhs)
 }
 
 void            Projectile::colisionEffect(AEntity ** entity) {
+    AEntity *ptr;
+
+    ptr = *entity;
+/*  ptr->getNext()->setPrev(ptr->getPrev());
+    ptr->getPrev()->setNext(ptr->getNext());
+    delete entity;*/
+    ptr->setHP(ptr->getHP() - CALC_DAMAGE(this->getDamage(), this->getArmor()));
+    if (ptr->getHP() <= 0)
+        ptr->setIsJustDestroyed(true);
+    this->setIsJustDestroyed(true);
     return;
 }
 
