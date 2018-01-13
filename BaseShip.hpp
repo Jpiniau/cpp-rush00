@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ISpaceShip.hpp                                     :+:      :+:    :+:   */
+/*   BaseShip.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpiniau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/13 13:03:54 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 15:06:12 by jpiniau          ###   ########.fr       */
+/*   Created: 2018/01/13 14:27:17 by jpiniau           #+#    #+#             */
+/*   Updated: 2018/01/13 15:00:00 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ISPACESHIP_HPP
-# define ISPACESHIP_HPP
+#ifndef BASESHIP_HPP
+# define BASESHIP_HPP
 
-class ISpaceShip
+#include <ncurses.h>
+
+class BaseShip : public ISpaceShip, public IPlayer
 {
 	public :
-		virtual void	ISpaceShip(void) const = 0;
-		virtual void	~ISpaceShip(void) const = 0;
-
-		virtual void	shoot(void) const = 0;
-}
+		BaseShip(void);
+		BaseShip(BaseShip & const src);
+		~BaseShip(void);
+		
+		void	shoot(void);
+		int		*detectinput(void);
+		void	setCoord(void);
+};
 
 #endif

@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ISpaceShip.hpp                                     :+:      :+:    :+:   */
+/*   Projectile.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpiniau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/13 13:03:54 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 15:06:12 by jpiniau          ###   ########.fr       */
+/*   Created: 2018/01/13 14:08:54 by jpiniau           #+#    #+#             */
+/*   Updated: 2018/01/13 14:26:22 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ISPACESHIP_HPP
-# define ISPACESHIP_HPP
+#ifndef PROJECTILE_HPP
+# define PROJECTILE_HPP
 
-class ISpaceShip
+#include "AEntity.hpp"
+
+class Projecile
 {
 	public :
-		virtual void	ISpaceShip(void) const = 0;
-		virtual void	~ISpaceShip(void) const = 0;
+		Projectile(void);
+		Projectile(Projectile & const src);
+		Projectile(int damage, int range);
+		~Projectile(void);
 
-		virtual void	shoot(void) const = 0;
-}
+		Projectile &	operator=(Projectile & const rhs);
+		int				getDamage(void);
+		int				getRange(void);
+		int				setDamage(int value);
+		int				setRange(int value);
+
+	private :
+		int	_damage;
+		int	_range;
+};
 
 #endif
