@@ -1,42 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Frame.hpp                                          :+:      :+:    :+:   */
+/*   Mine.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/13 12:36:53 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 15:06:00 by vnoon            ###   ########.fr       */
+/*   Created: 2018/01/13 14:25:50 by vnoon             #+#    #+#             */
+/*   Updated: 2018/01/13 14:57:26 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAME_HPP
-# define FRANE_HPP
+#ifndef MINE_HPP
+# define MINE_HPP
 
 #include "AEntity.hpp"
+#include "IEnemy.hpp"
 
-class Frame {
+class Mine : public AEntity, public IEnemy {
     private:
-    AEntity         *_ptr;
-
-
     public:
-    Frame(void);
-    Frame(Frame & const src);
-    ~Frame(void);
+    Mine(void);
+    Mine(Mine & const src);
+    ~Mine(void);
 
-    Frame &         operator=(Frame const & rhs);
-    
-    void            generateFrame(void);
-    void            spawnRandomEnemy(void);
-    void            updateAll(void);
-
-    //getteurs
-    AEntity & const getPtr(void) const;
-
-    //setteurs
-    void            setPtr(AEntity & const entity);
+    Mine &    operator=(Mine & const rhs);
+    void      spawnMeteor(void);      
 };
-
 
 #endif

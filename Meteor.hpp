@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Frame.hpp                                          :+:      :+:    :+:   */
+/*   Meteor.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/13 12:36:53 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 15:06:00 by vnoon            ###   ########.fr       */
+/*   Created: 2018/01/13 14:09:00 by vnoon             #+#    #+#             */
+/*   Updated: 2018/01/13 14:57:28 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAME_HPP
-# define FRANE_HPP
+#ifndef METEOR_HPP
+# define METEOR_HPP
 
+#include "IEnemy.hpp"
 #include "AEntity.hpp"
 
-class Frame {
+class Meteor : public AEntity, public IEnemy {
     private:
-    AEntity         *_ptr;
-
-
     public:
-    Frame(void);
-    Frame(Frame & const src);
-    ~Frame(void);
+    Meteor(void);
+    Meteor(Meteor & const src);
+    ~Meteor(void);
 
-    Frame &         operator=(Frame const & rhs);
-    
-    void            generateFrame(void);
-    void            spawnRandomEnemy(void);
-    void            updateAll(void);
-
-    //getteurs
-    AEntity & const getPtr(void) const;
-
-    //setteurs
-    void            setPtr(AEntity & const entity);
+    Meteor &    operator=(Meteor & const rhs);
 };
-
 
 #endif

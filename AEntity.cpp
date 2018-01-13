@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:55:52 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 14:05:46 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 14:58:25 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ AEntity &AEntity::operator=(AEntity &const rhs)
     this->setArmor(rhs.getArmor());
     this->setAllegiance(rhs.getAllegiance());
     this->setIsJustDestroyed(rhs.getIsJustDestroyed());
+    this->setNext(*(rhs.getNext()));
+    this->setPrev(*(rhs.getPrev()));
     return (*this);
 }
 
@@ -61,18 +63,20 @@ AEntity     AEntity::*colideWith(void) {
 }
 
 //getteurs
-char AEntity::getAppearance(void) const { return (this->_appearance); }
-int AEntity::getX(void) const { return (this->_x); }
-int AEntity::getY(void) const { return (this->_y); }
-int AEntity::getSpeedX(void) const { return (this->_speedX); }
-int AEntity::getSpeedY(void) const { return (this->_speedY); }
-int AEntity::getFrameAdvanceX(void) const { return (this->_frameAdvanceX); }
-int AEntity::getFrameAdvanceY(void) const { return (this->_frameAdvanceY); }
-int AEntity::getHP(void) const { return (this->_hp); }
-int AEntity::getArmor(void) const { return (this->_armor); }
-int AEntity::getAllegiance(void) const { return (this->_allegiance); }
-int AEntity::getFrameRate(void) const { return (this->_frameRate); }
-bool AEntity::getIsJustDestroyed(void) const { return (this->_isJustDestroyed); }
+char AEntity::getAppearance(void) const         { return (this->_appearance); }
+int AEntity::getX(void) const                   { return (this->_x); }
+int AEntity::getY(void) const                   { return (this->_y); }
+int AEntity::getSpeedX(void) const              { return (this->_speedX); }
+int AEntity::getSpeedY(void) const              { return (this->_speedY); }
+int AEntity::getFrameAdvanceX(void) const       { return (this->_frameAdvanceX); }
+int AEntity::getFrameAdvanceY(void) const       { return (this->_frameAdvanceY); }
+int AEntity::getHP(void) const                  { return (this->_hp); }
+int AEntity::getArmor(void) const               { return (this->_armor); }
+int AEntity::getAllegiance(void) const          { return (this->_allegiance); }
+int AEntity::getFrameRate(void) const           { return (this->_frameRate); }
+bool AEntity::getIsJustDestroyed(void) const    { return (this->_isJustDestroyed); }
+AEntity *AEntity::getNext(void) const           { return (this->_next);}
+AEntity *AEntity::getPrev(void) const           { return (this->_prev);}
 
 //setteurs
 void AEntity::setAppearance(char const symbol)
@@ -125,4 +129,11 @@ void AEntity::setAllegiance(int const value)
 void AEntity::setIsJustDestroyed(bool const value)
 {
     this->_isJustDestroyed = value;
+}
+
+void AEntity::setNext(AEntity & const next) {
+    *(this->_next) = next;
+}
+void AEntity::setPrev(AEntity & const prev) {
+    *(this->_prev) = prev; 
 }
