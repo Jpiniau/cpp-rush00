@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:55:52 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 16:01:24 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 17:23:32 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ AEntity &AEntity::operator=(AEntity const &rhs)
     this->setArmor(rhs.getArmor());
     this->setAllegiance(rhs.getAllegiance());
     this->setIsJustDestroyed(rhs.getIsJustDestroyed());
-    this->setNext(*(rhs.getNext()));
-    this->setPrev(*(rhs.getPrev()));
+    this->setNext(rhs.getNext());
+    this->setPrev(rhs.getPrev());
     return (*this);
 }
 
@@ -133,9 +133,9 @@ void AEntity::setIsJustDestroyed(bool const value)
     this->_isJustDestroyed = value;
 }
 
-void AEntity::setNext(AEntity const &next) {
-    *(this->_next) = next;
+void AEntity::setNext(AEntity *next) {
+    this->_next = next;
 }
-void AEntity::setPrev(AEntity const &prev) {
-    *(this->_prev) = prev; 
+void AEntity::setPrev(AEntity *prev) {
+    this->_prev = prev; 
 }

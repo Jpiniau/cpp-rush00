@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:33:50 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 16:54:26 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 17:23:00 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	BaseShip::shoot(void)
 
 	proj = new Projectile('-', this->getX() + 1, this->getY(), 3, 0, 0, 0, 0, 0, 0, 0, 10, 20); //Projectile('-', this->getX() + 1, this->getY(), 3, 0, 0, 0, 0, 0, 0, 0, 10, 20);
 	
-	list->setNext(*proj);
-	proj->setPrev(*list);
-//	proj->setNext(NULL);
+	list->setNext(proj);
+	proj->setPrev(list);
+	proj->setNext(NULL);
 }
 
 void	BaseShip::detectInput(void)

@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:55:58 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 15:56:36 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 17:23:31 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ class   AEntity {
     void            setArmor(int const value);
     void            setAllegiance(int const value);
     void            setIsJustDestroyed(bool const value);
-    void            setNext(AEntity const &next);
-    void            setPrev(AEntity const &prev);
+    void            setNext(AEntity *next);
+    void            setPrev(AEntity *prev);
 
 };
 
