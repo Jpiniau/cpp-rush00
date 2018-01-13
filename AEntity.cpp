@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:55:52 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 14:58:25 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 16:01:24 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ AEntity::AEntity(void)
     return;
 }
 
-AEntity::AEntity(AEntity &const src)
+AEntity::AEntity(AEntity const &src)
 {
     *this = src;
 }
@@ -40,7 +40,7 @@ AEntity::~AEntity(void)
     return;
 }
 
-AEntity &AEntity::operator=(AEntity &const rhs)
+AEntity &AEntity::operator=(AEntity const &rhs)
 {
     this->setAppearance(rhs.getAppearance());
     this->setX(rhs.getX());
@@ -58,7 +58,9 @@ AEntity &AEntity::operator=(AEntity &const rhs)
     return (*this);
 }
 
-AEntity     AEntity::*colideWith(void) {
+AEntity     *AEntity::colideWith(void) {
+    if (this->getFrameAdvanceX() < this->_frameRate)
+        this->getFrameRate();
     return (NULL);
 }
 
@@ -131,9 +133,9 @@ void AEntity::setIsJustDestroyed(bool const value)
     this->_isJustDestroyed = value;
 }
 
-void AEntity::setNext(AEntity & const next) {
+void AEntity::setNext(AEntity const &next) {
     *(this->_next) = next;
 }
-void AEntity::setPrev(AEntity & const prev) {
+void AEntity::setPrev(AEntity const &prev) {
     *(this->_prev) = prev; 
 }
