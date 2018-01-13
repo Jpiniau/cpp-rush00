@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:23:29 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 19:25:06 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 19:26:39 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,15 @@ void            Projectile::colisionEffect(AEntity ** entity) {
 }
 
 void            Projectile::move(void) {
+    int frame_advancementX = this->getFrameAdvanceX() + this->getSpeedX();
+    int frame_advancementY = this->getFrameAdvanceY() + this->getSpeedY();
+
+    if (ABS(frame_advancementX) >= this->getFrameRate()) {
+        this->setX(this->getX() + SIGNE(frame_advancementX));
+    }
+    if (ABS(frame_advancementY) >= this->getFrameRate()) {
+        this->setY(this->getY() + SIGNE(frame_advancementY));
+    }
     return;
 }
 
