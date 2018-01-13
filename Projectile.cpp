@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:23:29 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 19:26:39 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 19:43:48 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,13 @@ void            Projectile::colisionEffect(AEntity ** entity) {
         ptr->setIsJustDestroyed(true);
     this->setIsJustDestroyed(true);
     return;
+}
+
+Projectile	*Projectile::factory(void) {
+	Projectile *new_Projectile;
+
+	new_Projectile = new Projectile();
+	return (new_Projectile);
 }
 
 void            Projectile::move(void) {

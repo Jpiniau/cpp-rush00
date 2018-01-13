@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IPlayer.cpp                                        :+:      :+:    :+:   */
+/*   ASpaceShip.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/13 16:10:38 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 18:53:32 by vnoon            ###   ########.fr       */
+/*   Created: 2018/01/13 13:03:54 by jpiniau           #+#    #+#             */
+/*   Updated: 2018/01/13 19:55:15 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "IPlayer.hpp"
+#ifndef ASpaceShip_HPP
+# define ASpaceShip_HPP
 
-IPlayer::IPlayer(void) {
-    return;
-}
+class ASpaceShip
+{
+	public :
+		ASpaceShip(void);
+		ASpaceShip(ASpaceShip const &src);
+		virtual ~ASpaceShip(void) = 0;
 
-IPlayer::IPlayer(IPlayer const & src) {
-    *this = src;
-    return;
-}
+		virtual void	shoot(void) = 0;
+		ASpaceShip const & operator=(ASpaceShip const & rhs);
+};
+
+#endif

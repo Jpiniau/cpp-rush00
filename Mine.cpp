@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:25:53 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 19:25:33 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 20:06:59 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,13 @@ void            Mine::move(void) {
 
 void            Mine::patern(void) {
     return;
+}
+
+Mine	*Mine::factory(void) {
+	Mine *new_Mine;
+
+	new_Mine = new Mine();
+	return (new_Mine);
 }
 
 void            Mine::setRandSpeed(void) {

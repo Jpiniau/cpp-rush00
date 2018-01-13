@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ISpaceShip.cpp                                     :+:      :+:    :+:   */
+/*   APlayer.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/13 16:10:24 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 18:53:46 by vnoon            ###   ########.fr       */
+/*   Created: 2018/01/13 16:10:38 by jpiniau           #+#    #+#             */
+/*   Updated: 2018/01/13 19:56:44 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ISpaceShip.hpp"
+#include "APlayer.hpp"
 
-ISpaceShip::ISpaceShip(void) {
+APlayer::APlayer(void) {
     return;
 }
 
-ISpaceShip::ISpaceShip(ISpaceShip const & src) {
+APlayer::APlayer(APlayer const & src) {
     *this = src;
     return;
+}
+
+APlayer const &  APlayer::operator=(APlayer const & rhs) {
+    return (rhs);
 }

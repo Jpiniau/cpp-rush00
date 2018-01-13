@@ -6,14 +6,14 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:55:52 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 17:23:32 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 19:29:40 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AEntity.hpp"
 #include <cstddef>
 
-int const _frameRate = 5;
+#define FRAME_RATE 5
 
 AEntity::AEntity(void)
 {
@@ -59,7 +59,7 @@ AEntity &AEntity::operator=(AEntity const &rhs)
 }
 
 AEntity     *AEntity::colideWith(void) {
-    if (this->getFrameAdvanceX() < this->_frameRate)
+    if (this->getFrameAdvanceX() < FRAME_RATE)
         this->getFrameRate();
     return (NULL);
 }
@@ -75,7 +75,7 @@ int AEntity::getFrameAdvanceY(void) const       { return (this->_frameAdvanceY);
 int AEntity::getHP(void) const                  { return (this->_hp); }
 int AEntity::getArmor(void) const               { return (this->_armor); }
 int AEntity::getAllegiance(void) const          { return (this->_allegiance); }
-int AEntity::getFrameRate(void) const           { return (this->_frameRate); }
+int AEntity::getFrameRate(void) const           { return (FRAME_RATE); }
 bool AEntity::getIsJustDestroyed(void) const    { return (this->_isJustDestroyed); }
 AEntity *AEntity::getNext(void) const           { return (this->_next);}
 AEntity *AEntity::getPrev(void) const           { return (this->_prev);}

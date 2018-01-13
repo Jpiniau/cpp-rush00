@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:09:00 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 19:06:26 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 19:59:34 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ class Meteor : public AEntity, public AEnemy {
     void            patern(void);
     void            setRandSpeed(void);
     void            setRandCoord(void);
+
+    Meteor          *factory(void);
 
 };
 

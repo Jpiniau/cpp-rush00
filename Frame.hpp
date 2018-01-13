@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:36:53 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 16:05:26 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 19:39:16 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define FRAME_HPP
 
 #include "AEntity.hpp"
+#include "Mine.hpp"
+#include "Meteor.hpp"
+#include <cstdlib>
+#include <ctime>
+
 
 class Frame {
     private:

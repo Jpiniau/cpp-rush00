@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:25:50 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 19:05:19 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 20:07:05 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ class Mine : public AEntity, public AEnemy {
     void            move(void);
     void            patern(void);
     void            setRandSpeed(void);
-    void            setRandCoord(void); 
+    void            setRandCoord(void);
+
+    Mine            *factory(void);
 };
 
 #endif

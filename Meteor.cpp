@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:12:28 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 19:15:40 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 20:00:12 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,13 @@ void            Meteor::move(void) {
         this->setY(this->getY() + SIGNE(frame_advancementY));
     }
     return;
+}
+
+Meteor	*Meteor::factory(void) {
+	Meteor *new_Meteor;
+
+	new_Meteor = new Meteor();
+	return (new_Meteor);
 }
 
 void            Meteor::patern(void) {

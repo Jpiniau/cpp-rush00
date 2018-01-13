@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:08:54 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 19:23:48 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 19:43:13 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ class Projectile : public AEntity
 
     	void            colisionEffect(AEntity ** entity);
     	void            move(void);
+
+		Projectile		*factory(void);
 
 	private :
 		int	_damage;

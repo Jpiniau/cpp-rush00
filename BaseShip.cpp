@@ -6,18 +6,18 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:33:50 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 18:34:08 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 19:52:58 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BaseShip.hpp"
 
-BaseShip::BaseShip(void) : ISpaceShip(), IPlayer()
+BaseShip::BaseShip(void) : ASpaceShip(), APlayer()
 {
 	return;
 }
 
-BaseShip::BaseShip(BaseShip const & src) : ISpaceShip(src), IPlayer(src)
+BaseShip::BaseShip(BaseShip const & src) : ASpaceShip(src), APlayer(src)
 {
 	*this = src;
 }
@@ -25,6 +25,18 @@ BaseShip::BaseShip(BaseShip const & src) : ISpaceShip(src), IPlayer(src)
 BaseShip::~BaseShip(void)
 {
 	return;
+}
+
+void            BaseShip::colisionEffect(AEntity ** entity) {
+/*    AEntity *ptr;
+
+    ptr = *entity;
+    ptr->getNext()->setPrev(ptr->getPrev());
+    ptr->getPrev()->setNext(ptr->getNext());
+    delete entity;*/
+    (*entity)->setIsJustDestroyed(true);
+    this->setIsJustDestroyed(true);
+    return;
 }
 
 void	BaseShip::shoot(void)
@@ -76,6 +88,13 @@ void		BaseShip::setCH(int	*ch, int len) {
 
 int			*BaseShip::getCH(void) {
 	return ((this->_ch));
+}
+
+BaseShip	*BaseShip::factory(void) {
+	BaseShip *new_BaseShip;
+
+	new_BaseShip = new BaseShip();
+	return (new_BaseShip);
 }
 
 void		BaseShip::move(void)
