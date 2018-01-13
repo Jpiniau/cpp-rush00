@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:25:50 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 15:37:24 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 16:11:44 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ class Mine : public AEntity, public IEnemy {
     private:
     public:
     Mine(void);
-    Mine(Mine & const src);
+    Mine(Mine const & src);
     ~Mine(void);
 
-    Mine &          operator=(Mine & const rhs);
+    Mine &          operator=(Mine const & rhs);
     void            spawnMeteor(void);  
 
-    void            colisionEffect(AEntity & const entity);
+    void            colisionEffect(AEntity const & entity);
     void            move(void);
     void            patern(void);
     void            setRandSpeed(void);

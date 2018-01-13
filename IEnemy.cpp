@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 15:48:35 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 15:51:17 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 16:06:54 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ IEnemy::IEnemy(void) {
     return;
 }
 
-IEnemy::IEnemy(IEnemy & const src) {
+IEnemy::IEnemy(IEnemy const & src) {
+    *this = src;
     return;
 }

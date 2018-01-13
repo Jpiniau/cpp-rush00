@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:36:59 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 13:13:17 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 16:05:34 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Frame::Frame(void) {
     return;
 }
 
-Frame::Frame(Frame & const src) {
+Frame::Frame(Frame const & src) {
     *this = src;
 }
 
@@ -42,9 +42,9 @@ void            Frame::updateAll(void) {
 }
 
 //getteurs
-AEntity & const Frame::getPtr(void) const {    return (*(this->_ptr));}
+AEntity const & Frame::getPtr(void) const {    return (*(this->_ptr));}
 
 //setteurs
-void            Frame::setPtr(AEntity & const entity) {
+void            Frame::setPtr(AEntity const & entity) {
     *(this->_ptr) = entity;
 }

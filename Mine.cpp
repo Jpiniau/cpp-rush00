@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:25:53 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 15:51:38 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 16:11:54 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Mine::Mine(void) : AEntity('@', 45, 45, 2, 2, 0, 0, 50, 2, 2, false), IEnemy() {
     return;
 }
 
-Mine::Mine(Mine & const src) : AEntity(src), IEnemy(src)  {
+Mine::Mine(Mine const & src) : AEntity(src), IEnemy(src)  {
     *this = src;
 }
 
@@ -26,12 +26,12 @@ Mine::~Mine(void) {
     IEnemy::~IEnemy();
 }
 
-Mine &          Mine::operator=(Mine & const rhs) {
+Mine &          Mine::operator=(Mine const & rhs) {
     AEntity::operator=(rhs);
     return (*this);
 }
 
-void            Mine::colisionEffect(AEntity & const entity) {
+void            Mine::colisionEffect(AEntity const & entity) {
     return;
 }
 

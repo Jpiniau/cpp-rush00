@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:36:53 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 15:20:11 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 16:05:26 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Frame {
 
     public:
     Frame(void);
-    Frame(Frame & const src);
+    Frame(Frame const & src);
     ~Frame(void);
 
     Frame &         operator=(Frame const & rhs);
@@ -32,10 +32,10 @@ class Frame {
     void            updateAll(void);
 
     //getteurs
-    AEntity & const getPtr(void) const;
+    AEntity const & getPtr(void) const;
 
     //setteurs
-    void            setPtr(AEntity & const entity);
+    void            setPtr(AEntity const & entity);
 };
 
 

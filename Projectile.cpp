@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:23:29 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 15:31:48 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 16:13:00 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Projectile::Projectile(void) : AEntity()
     return;
 }
 
-Projectile::Projectile(Projectile &const src) : AEntity(src)
+Projectile::Projectile(Projectile const & src) : AEntity(src)
 {
     *this = src;
 }
@@ -36,7 +36,7 @@ Projectile::~Projectile(void)
     return;
 }
 
-Projectile &Projectile::operator=(Projectile &const rhs)
+Projectile &Projectile::operator=(Projectile const & rhs)
 {
     AEntity::operator=(rhs);
     this->setDamage(rhs.getDamage());
