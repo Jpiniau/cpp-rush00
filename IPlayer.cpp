@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Iplayer.hpp                                        :+:      :+:    :+:   */
+/*   IPlayer.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpiniau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/13 13:08:06 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 16:12:08 by jpiniau          ###   ########.fr       */
+/*   Created: 2018/01/13 16:10:38 by jpiniau           #+#    #+#             */
+/*   Updated: 2018/01/13 16:11:08 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IPLAYER_HPP
-# define IPLAYER_HPP
+#include "Iplayer.hpp"
 
-class IPlayer
-{
-	public :
-		IPlayer(void) const = 0;
-		virtual	~IPlayer(void) const = 0;
+IPlayer::IPlayer(void) {
+    return;
+}
 
-		virtual int*	detectInput(void) const = 0;
-		virtual void	setCoord(void) = 0;
-
-};
-
-#endif
+IPlayer::IPlayer(IPlayer & const src) {
+    return;
+}
