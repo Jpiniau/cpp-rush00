@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:09:00 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 16:53:09 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 18:22:54 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ class Meteor : public AEntity, public IEnemy {
     private:
     public:
     Meteor(void);
+    Meteor(int x, int y);
     Meteor(Meteor const & src);
     ~Meteor(void);
 
-    Meteor &    operator=(Meteor const & rhs);
+    Meteor &        operator=(Meteor const &rhs);
 
     void            colisionEffect(AEntity const & entity);
     void            move(void);

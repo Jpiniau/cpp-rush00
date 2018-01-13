@@ -6,13 +6,19 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:12:28 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 17:37:08 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 18:30:19 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Meteor.hpp"
+#include <cstdlib>
+#include <ctime>
 
 Meteor::Meteor(void) : AEntity('#', 45, 45, 2, 2, 0, 0, 50, 2, 2, false), IEnemy() {
+    return;
+}
+
+Meteor::Meteor(int x, int y) : AEntity('#', x, y, 2, 2, 0, 0, 50, 2, 2, false), IEnemy() {
     return;
 }
 
@@ -47,14 +53,24 @@ void            Meteor::patern(void) {
 }
 
 void            Meteor::setRandSpeed(void) {
-    return;
+    srand(time(NULL));
+    static int salt = rand() + 7;
+    int     val = ((rand() + salt++) % 4) + 1;
+    this->setSpeedX(-val);
+    val = ((rand() + salt++) % 11) - 5;
+    this->setSpeedY(val);
 }
 
 void            Meteor::setRandCoord(void) {
-    return;
+    srand(time(NULL));
+    static int salt = rand() + 7;
+    int     val = (rand() + salt++) % 40;
+    this->setY(val + 5);
+    this->setSpeedY(74);
 }
 
-Meteor &        Meteor::operator=(Meteor const & rhs) {
-    AEntity::operator=(rhs);
-    return (*this);
+Meteor &	Meteor::operator=(Meteor const & rhs)
+{
+	AEntity::operator=(rhs);
+	return (*this);
 }

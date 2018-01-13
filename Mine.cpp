@@ -6,12 +6,15 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:25:53 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 17:37:35 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/13 18:23:58 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "Mine.hpp"
+#include <cstdlib>
+#include <ctime>
+
 
 Mine::Mine(void) : AEntity('@', 45, 45, 2, 2, 0, 0, 50, 2, 2, false), IEnemy() {
     return;
@@ -53,16 +56,33 @@ void            Mine::patern(void) {
 }
 
 void            Mine::setRandSpeed(void) {
-    return;
+    srand(time(NULL));
+    static int salt = rand() + 7;
+    int     val = ((rand() + salt++) % 4) + 1;
+    this->setSpeedX(-val);
+    val = ((rand() + salt++) % 11) - 5;
+    this->setSpeedY(val);
 }
 
 void            Mine::setRandCoord(void) {
-    return;
+    srand(time(NULL));
+    static int salt = rand() + 7;
+    int     val = (rand() + salt++) % 40;
+    this->setY(val + 5);
+    this->setSpeedY(74);
 }
 
 void            Mine::spawnMeteor(void) {
-    AEntity     *ptr;
-//   ptr = new Mine();
-    ptr = this->getNext();
-//    this->setNext(*ptr);
+	Meteor      *meteor;
+	AEntity		*list;
+
+	list = this;
+	while (list->getNext())
+		list = list->getNext();
+
+	meteor = new Meteor(this->getX(), this->getY());
+	
+	list->setNext(meteor);
+	meteor->setPrev(list);
+	meteor->setNext(NULL);
 }
