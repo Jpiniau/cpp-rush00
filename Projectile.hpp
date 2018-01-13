@@ -6,7 +6,7 @@
 /*   By: jpiniau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:08:54 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 14:26:22 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/13 15:16:21 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "AEntity.hpp"
 
-class Projecile
+class Projectile
 {
 	public :
 		Projectile(void);

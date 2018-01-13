@@ -6,18 +6,18 @@
 /*   By: jpiniau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:33:50 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 15:04:53 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/13 15:16:05 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BaseShip.hpp"
 
-BaseShip::BaseShip(void) :
+BaseShip::BaseShip(void) : ISpaceShip(void), IPlayer(void)
 {
     return;
 }
 
-BaseShip::BaseShip(BaseShip &const src) :
+BaseShip::BaseShip(BaseShip &const src) : ISpaceShip(src), IPlayer(src)
 {
     *this = src;
 }
@@ -33,7 +33,7 @@ void	BaseShip::shoot(void)
 	return;
 }
 
-int		*BaseShip::detectInput(void)
+int *	BaseShip::detectInput(void)
 {
 	int		ch[4];
 	int		i;
@@ -51,4 +51,10 @@ void	BaseShip::SetCoord(void)
 	this->setX(5);
 	this->setY(5);
 	return;
+}
+
+BaseShip &	BaseShip::operator=(BaseShip & const rhs)
+{
+	Aentity::operator=(rhs);
+	return (*this);
 }
