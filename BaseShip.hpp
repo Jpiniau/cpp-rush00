@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:27:17 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/14 14:04:57 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 17:14:13 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class BaseShip : public ASpaceShip, public APlayer, public AEntity
 		void		colisionEffect(AEntity ** entity);
 
 		BaseShip	*factory(void);
+		void		destructor(void);
 
 	private:
 };

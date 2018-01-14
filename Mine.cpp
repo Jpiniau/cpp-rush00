@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:25:53 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 17:24:32 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 17:31:08 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,8 @@ void            Mine::spawnMeteor(void) {
 	list->setNext(meteor);
 	meteor->setPrev(list);
 	meteor->setNext(NULL);
+}
+
+void		Mine::destructor(void){
+	Mine::~Mine();
 }

@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:23:29 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/14 16:46:20 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/14 17:11:45 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,8 @@ void Projectile::setDamage(int const value)
 void Projectile::setRange(int const value)
 {
 	this->_range = value;
+}
+
+void	Projectile::destructor(void) {
+	Projectile::~Projectile();
 }

@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:36:59 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 16:43:48 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/14 17:39:30 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,18 @@ void            Frame::updateAll(void) {
 	ptr->setCH(newCH, 4);
 	for (; ptr != NULL; ptr = ptr->getNext())
 		ptr->move();
+	ptr = this->_ptr;
+	ptr->colideWith();
+	for (; ptr != NULL; ptr = ptr->getNext()) {
+		if (ptr->getIsJustDestroyed() == 1)
+		{
+			if (ptr->getPrev() != NULL)
+				ptr->getPrev()->setNext(ptr->getNext());
+			if (ptr->getNext() != NULL)
+				ptr->getNext()->setPrev(ptr->getPrev());
+			ptr->destructor();
+		}
+	}
 }
 
 //getteurs

@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:33:50 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/14 16:30:11 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 17:13:24 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,4 +151,8 @@ void		BaseShip::move(void)
 	}
 
 	return;
+}
+
+void		BaseShip::destructor(void){
+	BaseShip::~BaseShip();
 }

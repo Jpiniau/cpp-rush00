@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:55:52 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 15:22:53 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 17:41:10 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,16 @@ AEntity &AEntity::operator=(AEntity const &rhs)
 
 void     AEntity::colideWith(void) {
     AEntity     *ptrToOrgn = this;
-    for (AEntity *ptr = this; ptr != NULL; ptr = ptr->getNext())
-        for (AEntity *ptrNav = ptrToOrgn; ptrNav != NULL; ptrNav->getNext())
-            if ((ptr != ptrNav) && (ptr->getX() == ptrNav->getX()) && (ptr->getY() == ptrNav->getY()))
+    for (AEntity *ptr = this; ptr != NULL; ptr = ptr->getNext()) {
+//        std::cout << "1" << std::endl;
+        for (AEntity *ptrNav = ptrToOrgn; ptrNav != NULL; ptrNav = ptrNav->getNext()) {
+//            std::cout << "2" << std::endl;
+            if ((ptr != ptrNav) && (ptr->getX() == ptrNav->getX()) && (ptr->getY() == ptrNav->getY())) {
+//                std::cout << "boum" << std::endl;
                 ptr->colisionEffect(&ptrNav);
+            }
+        }
+    }
 }
 
 //getteurs
