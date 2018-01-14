@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:12:28 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 12:57:13 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/14 17:07:47 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 #include <cstdlib>
 #include <ctime>
 
-Meteor::Meteor(void) : AEntity("#", 45, 45, 2, 2, 0, 0, 50, 2, 2, false), AEnemy() {
-    return;
+Meteor::Meteor(void) : AEntity("#", 75, 45, 0, 0, 0, 0, 50, 2, 2, false), AEnemy() {
+	this->setRandSpeed();
+	this->setRandCoord();
+	return;
 }
 
 Meteor::Meteor(int x, int y) : AEntity("#", x, y, 2, 2, 0, 0, 50, 2, 2, false), AEnemy() {
@@ -43,16 +45,20 @@ void            Meteor::colisionEffect(AEntity ** entity) {
 }
 
 void            Meteor::move(void) {
-    int frame_advancementX = this->getFrameAdvanceX() + this->getSpeedX();
-    int frame_advancementY = this->getFrameAdvanceY() + this->getSpeedY();
-
-    if (ABS(frame_advancementX) >= this->getFrameRate()) {
-        this->setX(this->getX() + SIGNE(frame_advancementX));
-    }
-    if (ABS(frame_advancementY) >= this->getFrameRate()) {
-        this->setY(this->getY() + SIGNE(frame_advancementY));
-    }
-    return;
+	this->setFrameAdvanceX(this->getFrameAdvanceX() + this->getSpeedX());
+	this->setFrameAdvanceY(this->getFrameAdvanceY() + this->getSpeedY());
+	if (ABS(this->getFrameAdvanceX()) >= FRAME_RATE) {
+        if (this->getX() + SIGNE(getFrameAdvanceX()) >= 75 || this->getX() + SIGNE(getFrameAdvanceX()) < 0)
+			this->setIsJustDestroyed(true);
+		this->setX(this->getX() + SIGNE(getFrameAdvanceX()));
+		this->setFrameAdvanceX(this->getFrameAdvanceX() % FRAME_RATE);
+	}
+	if (ABS(this->getFrameAdvanceY()) >= FRAME_RATE) {
+        if (this->getY() + SIGNE(getFrameAdvanceY()) >= 50 || this->getY() + SIGNE(getFrameAdvanceY()) < 0)
+            this->setIsJustDestroyed(true);
+		this->setY(this->getY() + SIGNE(getFrameAdvanceY()));
+		this->setFrameAdvanceY(this->getFrameAdvanceY() % FRAME_RATE);
+	}
 }
 
 Meteor	*Meteor::factory(void) {
@@ -71,7 +77,7 @@ void            Meteor::setRandSpeed(void) {
     static int salt = rand() + 7;
     int     val = ((rand() + salt++) % 4) + 1;
     this->setSpeedX(-val);
-    val = ((rand() + salt++) % 11) - 5;
+    val = ((rand() + salt++) % 11);
     this->setSpeedY(val);
 }
 
