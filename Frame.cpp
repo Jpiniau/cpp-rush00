@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:36:59 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 10:51:53 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/14 11:45:57 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ void            Frame::spawnRandomEnemy(void) {
 }
 
 void            Frame::updateAll(void) {
-    
+	for (AEntity *ptr = this->_ptr; ptr != NULL; ptr = ptr->getNext())
+		ptr->move();
 }
 
 //getteurs

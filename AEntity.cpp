@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:55:52 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 10:24:43 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/14 11:41:39 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,12 @@ AEntity &AEntity::operator=(AEntity const &rhs)
     return (*this);
 }
 
-AEntity     *AEntity::colideWith(void) {
-    if (this->getFrameAdvanceX() < FRAME_RATE)
-        this->getFrameRate();
-    return (NULL);
+void     AEntity::colideWith(void) {
+    AEntity     *ptrToOrgn = this;
+    for (AEntity *ptr = this; ptr != NULL; ptr = ptr->getNext())
+        for (AEntity *ptrNav = ptrToOrgn; ptrNav != NULL; ptrNav->getNext())
+            if ((ptr != ptrNav) && (ptr->getX() == ptrNav->getX()) && (ptr->getY() == ptrNav->getY()))
+                ptr->colisionEffect(&ptrNav);
 }
 
 //getteurs
