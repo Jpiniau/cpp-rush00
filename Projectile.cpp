@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:23:29 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/14 16:19:02 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/14 16:31:22 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,14 @@ void            Projectile::move(void) {
 
 	this->setFrameAdvanceX(this->getFrameAdvanceX() + this->getSpeedX());
 	this->setFrameAdvanceY(this->getFrameAdvanceY() + this->getSpeedY());
-
+	//std::cout << "pan pan pan";
 	if (ABS(this->getFrameAdvanceX()) >= FRAME_RATE) {
-		this->setX(this->getX() + (getFrameAdvanceX() % FRAME_RATE));
+		this->setX(this->getX() + SIGNE(getFrameAdvanceX()));
 		this->setFrameAdvanceX(this->getFrameAdvanceX() % FRAME_RATE);
+		//std::cout << "pan pan pan";
 	}
 	if (ABS(this->getFrameAdvanceY()) >= FRAME_RATE) {
-		this->setY(this->getY() + (getFrameAdvanceY() % FRAME_RATE));
+		this->setY(this->getY() + SIGNE(getFrameAdvanceY()));
 		this->setFrameAdvanceY(this->getFrameAdvanceY() % FRAME_RATE);
 	}
 	return;

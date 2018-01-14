@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:33:50 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/14 16:17:52 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/14 16:30:11 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,12 +140,12 @@ void		BaseShip::move(void)
 	this->setFrameAdvanceY(this->getFrameAdvanceY() + this->getSpeedY());
 
 	if (ABS(this->getFrameAdvanceX()) >= FRAME_RATE) {
-		this->setX(this->getX() + (getFrameAdvanceX() % FRAME_RATE));
+		this->setX(this->getX() + SIGNE(getFrameAdvanceX()));
 		this->setFrameAdvanceX(this->getFrameAdvanceX() % FRAME_RATE);
 		//std::cout << "1Coord x:" << this->getX() << "y:" << this->getY() << std::endl;
 	}
 	if (ABS(this->getFrameAdvanceY()) >= FRAME_RATE) {
-		this->setY(this->getY() + (getFrameAdvanceY() % FRAME_RATE));
+		this->setY(this->getY() + SIGNE(getFrameAdvanceY()));
 		this->setFrameAdvanceY(this->getFrameAdvanceY() % FRAME_RATE);
 		//std::cout << "2Coord x:" << this->getY() << "y:" << this->getY();
 	}

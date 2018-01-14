@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:55:58 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 15:18:46 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 16:32:00 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ class   AEntity {
     int		            _ch[4];
 
     protected:
-    #define ABS(val) val < 0 ? -val : val 
-    #define SIGNE(val)  val < 0 ? -1 : 1 
+    #define ABS(val) (val < 0 ? -val : val) 
+   #define SIGNE(val)  (val < 0 ? -1 : 1) 
     #define FRAME_RATE 5
 
     AEntity(void);
