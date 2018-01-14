@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:12:28 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 17:29:30 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 18:28:25 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ Meteor::Meteor(void) : AEntity("#", 75, 45, 0, 0, 0, 0, 50, 2, 2, false), AEnemy
 }
 
 Meteor::Meteor(int x, int y) : AEntity("#", x, y, 2, 2, 0, 0, 50, 2, 2, false), AEnemy() {
+	this->setRandSpeed();
     return;
 }
 
@@ -33,12 +34,14 @@ Meteor::~Meteor(void) {
 }
 
 void            Meteor::colisionEffect(AEntity ** entity) {
-/*    AEntity *ptr;
+    AEntity *ptr;
 
     ptr = *entity;
-    ptr->getNext()->setPrev(ptr->getPrev());
+    /*ptr->getNext()->setPrev(ptr->getPrev());
     ptr->getPrev()->setNext(ptr->getNext());
     delete entity;*/
+	if (ptr->getAllegiance() == this->getAllegiance())
+		return;
     (*entity)->setIsJustDestroyed(true);
     this->setIsJustDestroyed(true);
     return;
@@ -78,7 +81,7 @@ void            Meteor::setRandSpeed(void) {
     int     val = ((rand() + salt++) % 4) + 1;
     this->setSpeedX(-val);
     val = ((rand() + salt++) % 11) - 5;
-    this->setSpeedY(val);
+    this->setSpeedY(0);
 }
 
 void            Meteor::setRandCoord(void) {

@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:33:50 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/14 17:13:24 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/14 18:38:56 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	BaseShip::shoot(void)
 	while (list->getNext())
 		list = list->getNext();
 	//std::cout << this->getX() + 1 << std::endl;
-	proj = new Projectile("-", this->getX() + 1, this->getY(), 10, 0, 0, 0, 0, 0, 0, 0, 10, 20);
+	proj = new Projectile("-", this->getX() + 1, this->getY(), 10, 0, 0, 0, 0, 0, 0, 0, 10, 30);
 
 	list->setNext(proj);
 	proj->setPrev(list);
@@ -100,6 +100,11 @@ void		BaseShip::move(void)
 
 	//std::cout << ch[0] << std::endl;
 	i = -1;
+	if (ch[0] == -1)
+	{
+		this->setSpeedY(0);
+		this->setSpeedX(0);
+	}
 	while (++i < 4)
 	{
 		switch (ch[i])
@@ -130,6 +135,9 @@ void		BaseShip::move(void)
 			break;
 			case ' ':
 				this->shoot();
+			break;
+			default:
+				
 			break;
 		}
 		ch[i] = -1;

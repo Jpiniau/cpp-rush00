@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:36:59 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 17:39:30 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 18:06:55 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ Frame::Frame(void) {
 	BS = new BaseShip();
 
 	_ptr = BS;
+	_endOfGame = 0;
     return;
 }
 
@@ -56,6 +57,9 @@ void            Frame::generateFrame(void) {
 
 	win	= _win;
 
+	if (_ptr == NULL)
+		return;
+
 	werase(win);
 	for (AEntity *ptr = this->_ptr; ptr != NULL; ptr = ptr->getNext())
 	{
@@ -73,6 +77,9 @@ void            Frame::spawnRandomEnemy(void) {
 	AEntity		*list;
     static int	salt = rand() + 7;
     int			val = ((rand() + salt++) % 2);
+
+	if (_ptr == NULL)
+		return;
 
 	list = _ptr;
     srand(time(NULL));
@@ -112,18 +119,32 @@ void            Frame::updateAll(void) {
 	for (; ptr != NULL; ptr = ptr->getNext()) {
 		if (ptr->getIsJustDestroyed() == 1)
 		{
-			if (ptr->getPrev() != NULL)
-				ptr->getPrev()->setNext(ptr->getNext());
-			if (ptr->getNext() != NULL)
-				ptr->getNext()->setPrev(ptr->getPrev());
-			ptr->destructor();
+			if (this->_ptr != ptr)
+			{
+				if (ptr->getPrev() != NULL)
+					ptr->getPrev()->setNext(ptr->getNext());
+				if (ptr->getNext() != NULL)
+					ptr->getNext()->setPrev(ptr->getPrev());
+				ptr->destructor();
+			}
+			else
+			{
+				ptr = this->_ptr->getNext();
+				for (; ptr != NULL; ptr = ptr->getNext()) {
+					ptr->getPrev()->destructor();
+				}
+				_ptr = NULL;
+				_endOfGame = 1;
+				break;
+			}
 		}
 	}
 }
 
 //getteurs
-AEntity const & Frame::getPtr(void) const {	return (*(this->_ptr));}
-WINDOW * Frame::getWin(void) const {	return (this->_win);}
+AEntity const & Frame::getPtr(void) const 		{	return (*(this->_ptr));}
+WINDOW * 		Frame::getWin(void) const 		{	return (this->_win);}
+int				Frame::getEndOfGame(void) const {	return (this->_endOfGame);}
 
 //setteurs
 void            Frame::setPtr(AEntity const & entity) {
@@ -132,4 +153,8 @@ void            Frame::setPtr(AEntity const & entity) {
 
 void			Frame::setWin(WINDOW * win) {
     this->_win = win;
+}
+
+void			Frame::setEndOfGame(int i) {
+	this->_endOfGame = i;
 }

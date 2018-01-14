@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:25:53 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 17:31:08 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 18:32:11 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ void            Mine::setRandSpeed(void) {
 	int     val = ((rand()) % 4) + 1;
 	this->setSpeedX(-val);
 	int 	val2 = ((rand()) % 11) - 5;
-	this->setSpeedY(val2);
+	(void)val2;
+	this->setSpeedY(0);
 }
 
 void            Mine::setRandCoord(void) {
@@ -98,11 +99,15 @@ void            Mine::spawnMeteor(void) {
 	Meteor      *meteor;
 	AEntity		*list;
 
+	if (this->getX() == 0 || this->getX() == 75 || this->getY() == 0 || this->getY() == 50)
+		return;
 	list = this;
 	while (list->getNext())
 		list = list->getNext();
 
+	int     val = (rand() % 11) - 5;
 	meteor = new Meteor(this->getX(), this->getY());
+	meteor->setSpeedY(val);
 
 	list->setNext(meteor);
 	meteor->setPrev(list);
@@ -110,5 +115,7 @@ void            Mine::spawnMeteor(void) {
 }
 
 void		Mine::destructor(void){
+	Mine::spawnMeteor();
+	Mine::spawnMeteor();
 	Mine::~Mine();
 }
