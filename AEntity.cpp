@@ -6,14 +6,13 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:55:52 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 11:41:39 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 15:22:53 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AEntity.hpp"
 #include <cstddef>
-
-#define FRAME_RATE 5
+#include <iostream>
 
 AEntity::AEntity(void)
 {
@@ -81,6 +80,7 @@ int AEntity::getFrameRate(void) const           { return (FRAME_RATE); }
 bool AEntity::getIsJustDestroyed(void) const    { return (this->_isJustDestroyed); }
 AEntity *AEntity::getNext(void) const           { return (this->_next);}
 AEntity *AEntity::getPrev(void) const           { return (this->_prev);}
+int	*AEntity::getCH(void)                       { return (this->_ch);}
 
 //setteurs
 void AEntity::setAppearance(std::string const symbol)
@@ -90,11 +90,15 @@ void AEntity::setAppearance(std::string const symbol)
 
 void AEntity::setX(int const value)
 {
-    this->_x = value;
+    //std::cout << "Value X:" << value << std::endl;
+    if (value >= 0 && value < 75)
+        this->_x = value;
 }
 void AEntity::setY(int const value)
 {
-    this->_y = value;
+    //std::cout << "Value Y:" << value << std::endl;
+    if (value >= 0 && value < 50)
+        this->_y = value;
 }
 void AEntity::setSpeedX(int const value)
 {
@@ -140,4 +144,9 @@ void AEntity::setNext(AEntity *next) {
 }
 void AEntity::setPrev(AEntity *prev) {
     this->_prev = prev; 
+}
+
+void AEntity::setCH(int	*ch, int len) {
+	while (--len >= 0)
+		this->_ch[len] = ch[len];
 }

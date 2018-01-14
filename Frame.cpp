@@ -6,11 +6,12 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:36:59 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 11:45:57 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 15:30:54 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Frame.hpp" 
+#include <iostream>
 
 Frame::Frame(void) {
 	WINDOW		*win;
@@ -18,13 +19,14 @@ Frame::Frame(void) {
 
 	initscr();
 	noecho();
-
+	curs_set(0);
 	start_color();
 	init_pair(1, COLOR_GREEN, COLOR_BLACK);
 	init_pair(2, COLOR_RED, COLOR_BLACK);
 
-	win = newwin(75, 50, 0, 0);
+	win = newwin(50, 75, 0, 0);
 	nodelay(win, TRUE);
+	keypad(win, TRUE);
 	refresh();
 	
 	_win = win;
@@ -50,19 +52,18 @@ Frame &         Frame::operator=(Frame const & rhs) {
 }
 
 void            Frame::generateFrame(void) {
-
-	AEntity	const	&ptr = getPtr();
 	WINDOW			*win;
 
 	win	= _win;
 
-	while (ptr.getNext())
+	werase(win);
+	for (AEntity *ptr = this->_ptr; ptr != NULL; ptr = ptr->getNext())
 	{
-		if (ptr.getAllegiance() == 0)
+		if (ptr->getAllegiance() == 0)
 			wattron(win, COLOR_PAIR(1));
 		else
 			wattron(win, COLOR_PAIR(2));
-		mvwprintw(win, ptr.getY(), ptr.getX(), ptr.getAppearance().c_str());
+		mvwprintw(win, ptr->getY(), ptr->getX(), ptr->getAppearance().c_str());
 	}
 	wrefresh(win);
 }
@@ -86,7 +87,15 @@ void            Frame::spawnRandomEnemy(void) {
 }
 
 void            Frame::updateAll(void) {
-	for (AEntity *ptr = this->_ptr; ptr != NULL; ptr = ptr->getNext())
+	int i;
+	int	newCH[4];
+	AEntity *ptr = this->_ptr;
+	
+	i = -1;
+	while (++i < 4)
+		newCH[i] = wgetch(this->getWin());
+	ptr->setCH(newCH, 4);
+	for (; ptr != NULL; ptr = ptr->getNext())
 		ptr->move();
 }
 

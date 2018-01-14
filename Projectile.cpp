@@ -6,11 +6,12 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:23:29 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/14 10:25:38 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/14 15:53:52 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Projectile.hpp"
+#include <iostream>
 
 Projectile::Projectile(void) : AEntity()
 {
@@ -28,6 +29,7 @@ Projectile::Projectile(std::string appearence, int x, int y, int speedX, int spe
                        AEntity(appearence, x, y, speedX, speedY, frameAdvanceX, frameAdvanceY,
                        hp, armor, allegiance, isJustDestroyed), _damage(damage), _range(range)
 {
+    std::cout << this->getX() + 1 << std::endl;
     return;
 }
 

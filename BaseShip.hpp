@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:27:17 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/14 10:44:02 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/14 14:04:57 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,12 @@ class BaseShip : public ASpaceShip, public APlayer, public AEntity
 		void	setCoord(void);
 		void	move(void);
 
-		void	setCH(int *ch, int len);
-		int		*getCH(void);
-
 		BaseShip &	operator=(BaseShip const & rhs);
 		void		colisionEffect(AEntity ** entity);
 
 		BaseShip	*factory(void);
 
 	private:
-		int		_ch[4];
 };
 
 #endif

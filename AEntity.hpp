@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:55:58 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 11:31:29 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 15:18:46 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define AENTITY_HPP
 
 #include <string>
+//#include "Frame.hpp"
 
 class   AEntity {
     private:
@@ -30,12 +31,13 @@ class   AEntity {
     bool                _isJustDestroyed;
     AEntity             *_next;
     AEntity             *_prev;
+    int		            _ch[4];
 
     protected:
     #define ABS(val) val < 0 ? -val : val 
     #define SIGNE(val)  val < 0 ? -1 : 1 
+    #define FRAME_RATE 5
 
-    static const int    _frameRate;
     AEntity(void);
     AEntity(AEntity const &src);
     AEntity(std::string appearance, int x, int y, int speedX, int speedY, 
@@ -67,7 +69,7 @@ class   AEntity {
     bool            getIsJustDestroyed(void) const;
     AEntity         *getNext(void) const;
     AEntity         *getPrev(void) const;
-
+	int		        *getCH(void);
     //setteurs
     void            setAppearance(std::string const symbol);
     void            setX(int const value);
@@ -82,7 +84,7 @@ class   AEntity {
     void            setIsJustDestroyed(bool const value);
     void            setNext(AEntity *next);
     void            setPrev(AEntity *prev);
-
+    void        	setCH(int *ch, int len);
 };
 
 #endif
