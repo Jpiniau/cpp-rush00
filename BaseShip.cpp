@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:33:50 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/14 15:52:45 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 16:09:30 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	BaseShip::shoot(void)
 	list = this;
 	while (list->getNext())
 		list = list->getNext();
-	std::cout << this->getX() + 1 << std::endl;
+	//std::cout << this->getX() + 1 << std::endl;
 	proj = new Projectile("-", this->getX() + 1, this->getY(), 5, 0, 0, 0, 0, 0, 0, 0, 10, 20);
 
 	list->setNext(proj);
@@ -94,7 +94,7 @@ BaseShip	*BaseShip::factory(void) {
 
 void		BaseShip::move(void)
 {
-	std::cout << this->getX() << std::endl;
+	//std::cout << this->getX() << std::endl;
 	int *ch = getCH();
 	int i;
 
@@ -105,28 +105,24 @@ void		BaseShip::move(void)
 		switch (ch[i])
 		{
 			case KEY_UP:
-				std::cout << "Key up" << std::endl;
 				if (getSpeedY() <= -5)
 					setSpeedY(-5);
 				else
 					setSpeedY(getSpeedY() - 1);
 			break;
 			case KEY_DOWN:
-				std::cout << "Key down" << std::endl;
 				if (getSpeedY() >= 5)
 					setSpeedY(5);
 				else
 					setSpeedY(getSpeedY() + 1);
 			break;
 			case KEY_LEFT:
-				std::cout << "Key letf" << std::endl;
 				if (getSpeedX() <= -5)
 					setSpeedX(-5);
 				else
 					setSpeedX(getSpeedX() - 1);
 			break;		
 			case KEY_RIGHT:
-				std::cout << "Key right" << std::endl;
 				if (getSpeedX() >= 5)
 					setSpeedX(5);
 				else
@@ -134,23 +130,23 @@ void		BaseShip::move(void)
 			break;
 			case ' ':
 				this->shoot();
-				//std::cout << "shoot" << std::endl;
 			break;
 		}
 		ch[i] = -1;
 	}
-
+	//std::cout << "Speed x:" << this->getSpeedX() << std::endl <<  "Speed y:" << this->getSpeedY() << std::endl;
+	//std::cout << "Frame advance x:" << this->getFrameAdvanceX() << std::endl <<  "Frame advance y:" << this->getFrameAdvanceY() << std::endl;
 	this->setFrameAdvanceX(this->getFrameAdvanceX() + this->getSpeedX());
 	this->setFrameAdvanceY(this->getFrameAdvanceY() + this->getSpeedY());
 
 	if (ABS(this->getFrameAdvanceX()) >= FRAME_RATE) {
 		this->setX(this->getX() + (getFrameAdvanceX() % FRAME_RATE));
-		this->setFrameAdvanceX(this->getFrameAdvanceX() - FRAME_RATE);
+		this->setFrameAdvanceX(this->getFrameAdvanceX() % FRAME_RATE);
 		//std::cout << "1Coord x:" << this->getX() << "y:" << this->getY() << std::endl;
 	}
 	if (ABS(this->getFrameAdvanceY()) >= FRAME_RATE) {
 		this->setY(this->getY() + (getFrameAdvanceY() % FRAME_RATE));
-		this->setFrameAdvanceY(this->getFrameAdvanceY() - FRAME_RATE);
+		this->setFrameAdvanceY(this->getFrameAdvanceY() % FRAME_RATE);
 		//std::cout << "2Coord x:" << this->getY() << "y:" << this->getY();
 	}
 
