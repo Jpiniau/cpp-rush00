@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:12:28 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 16:50:29 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/14 17:10:59 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,10 @@ void            Meteor::setRandCoord(void) {
     int     val = (rand() + salt++) % 40;
     this->setY(val + 5);
     this->setSpeedY(74);
+}
+
+void	Meteor::destructor(void) {
+	Meteor::~Meteor();
 }
 
 Meteor &	Meteor::operator=(Meteor const &rhs)

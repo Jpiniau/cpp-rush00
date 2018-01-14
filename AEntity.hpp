@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:55:58 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 16:32:00 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 17:04:33 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ class   AEntity {
     virtual void    colisionEffect(AEntity ** entity) = 0;
     virtual void    move(void) = 0;
     virtual AEntity *factory(void) = 0;
+    virtual void	destructor(void) = 0;
 
     //getteurs
 	std::string     getAppearance(void) const;

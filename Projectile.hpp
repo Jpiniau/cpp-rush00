@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:08:54 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/14 10:24:10 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/14 17:08:58 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class Projectile : public AEntity
     	void            move(void);
 
 		Projectile		*factory(void);
+		void			destructor(void);
 
 	private :
 		int	_damage;
