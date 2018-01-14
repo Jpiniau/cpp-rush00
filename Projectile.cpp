@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:23:29 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/14 16:31:22 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 16:38:41 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,9 @@ void            Projectile::move(void) {
 		this->setY(this->getY() + SIGNE(getFrameAdvanceY()));
 		this->setFrameAdvanceY(this->getFrameAdvanceY() % FRAME_RATE);
 	}
+	this->setRange(this->getRange() - 1);
+	if (this->getRange() <= 0)
+		this->setIsJustDestroyed(true);
 	return;
 }
 
