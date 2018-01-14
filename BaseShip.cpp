@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:33:50 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/14 18:38:56 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/14 18:43:07 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,25 +113,25 @@ void		BaseShip::move(void)
 				if (getSpeedY() <= -5)
 					setSpeedY(-5);
 				else
-					setSpeedY(getSpeedY() - 1);
+					setSpeedY(-5);
 			break;
 			case KEY_DOWN:
 				if (getSpeedY() >= 5)
 					setSpeedY(5);
 				else
-					setSpeedY(getSpeedY() + 1);
+					setSpeedY(5);
 			break;
 			case KEY_LEFT:
 				if (getSpeedX() <= -5)
 					setSpeedX(-5);
 				else
-					setSpeedX(getSpeedX() - 1);
+					setSpeedX(-5);
 			break;		
 			case KEY_RIGHT:
 				if (getSpeedX() >= 5)
 					setSpeedX(5);
 				else
-					setSpeedX(getSpeedX() + 1);
+					setSpeedX(5);
 			break;
 			case ' ':
 				this->shoot();
