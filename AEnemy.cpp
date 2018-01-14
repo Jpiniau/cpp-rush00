@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 15:48:35 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 18:50:41 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 12:54:50 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ AEnemy::AEnemy(AEnemy const & src) {
     return;
 }
 
-AEnemy const &AEnemy::operator=(AEnemy const &rhs) {
+AEnemy::~AEnemy(void) {
+}
+
+	AEnemy const &AEnemy::operator=(AEnemy const &rhs) {
     return (rhs);
 }

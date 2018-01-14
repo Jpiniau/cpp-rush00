@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:12:28 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 10:26:52 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/14 12:57:13 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@ Meteor::Meteor(int x, int y) : AEntity("#", x, y, 2, 2, 0, 0, 50, 2, 2, false), 
     return;
 }
 
-Meteor::Meteor(Meteor const & src) : AEntity(src), AEnemy(src) {
+Meteor::Meteor(Meteor const & src) : AEntity(src) {
     *this = src;
 }
 
 Meteor::~Meteor(void) {
     AEntity::~AEntity();
-    AEnemy::~AEnemy();
 }
 
 void            Meteor::colisionEffect(AEntity ** entity) {
