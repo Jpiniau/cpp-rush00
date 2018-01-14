@@ -62,10 +62,11 @@ int main(void)
 		this_time = clock();
 		time_counter += (double) (this_time - last_time);
 		last_time = this_time;
-		if (time_counter > (double)( (0.3) * CLOCKS_PER_SEC)) {
-			time_counter -= (double)( (0.3) * CLOCKS_PER_SEC);
+		if (time_counter > (double)( (0.2) * CLOCKS_PER_SEC)) {
+			time_counter -= (double)( (0.2) * CLOCKS_PER_SEC);
 			new_frame->updateAll();
 			new_frame->generateFrame();
+			new_frame->spawnRandomEnemy();
 		}
 	}
 

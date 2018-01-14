@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:36:59 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 15:30:54 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 16:43:48 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,12 @@ void            Frame::generateFrame(void) {
 
 void            Frame::spawnRandomEnemy(void) {
     AEntity     *ptr;
+	AEntity		*list;
+    static int	salt = rand() + 7;
+    int			val = ((rand() + salt++) % 2);
+
+	list = _ptr;
     srand(time(NULL));
-    static int salt = rand() + 7;
-    int     val = ((rand() + salt++) % 2);
     if (val < 0 || val > 1)
         val = 0;
     switch (val) {
@@ -82,8 +85,15 @@ void            Frame::spawnRandomEnemy(void) {
         case 1:
             ptr = new Mine();
         break;
-    }
-    
+	 }
+	if (val == 0 || val == 1)
+	{
+		while (list->getNext())
+			list= list->getNext();
+		list->setNext(ptr);
+		ptr->setPrev(list);
+		ptr->setNext(NULL);
+	}
 }
 
 void            Frame::updateAll(void) {

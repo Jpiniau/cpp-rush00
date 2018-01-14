@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:12:28 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 12:57:13 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/14 16:50:29 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 #include <cstdlib>
 #include <ctime>
 
-Meteor::Meteor(void) : AEntity("#", 45, 45, 2, 2, 0, 0, 50, 2, 2, false), AEnemy() {
-    return;
+Meteor::Meteor(void) : AEntity("#", 75, 45, 2, 2, 0, 0, 50, 2, 2, false), AEnemy() {
+	this->setRandSpeed();
+	this->setRandCoord();
+	return;
 }
 
 Meteor::Meteor(int x, int y) : AEntity("#", x, y, 2, 2, 0, 0, 50, 2, 2, false), AEnemy() {
