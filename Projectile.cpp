@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:23:29 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/14 15:53:52 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 16:19:02 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,49 +15,48 @@
 
 Projectile::Projectile(void) : AEntity()
 {
-    return;
+	return;
 }
 
 Projectile::Projectile(Projectile const & src) : AEntity(src)
 {
-    *this = src;
+	*this = src;
 }
 
 Projectile::Projectile(std::string appearence, int x, int y, int speedX, int speedY,
-					   int frameAdvanceX, int frameAdvanceY, int hp, int armor,
-					   int allegiance, bool isJustDestroyed, int damage, int range) :
-                       AEntity(appearence, x, y, speedX, speedY, frameAdvanceX, frameAdvanceY,
-                       hp, armor, allegiance, isJustDestroyed), _damage(damage), _range(range)
+		int frameAdvanceX, int frameAdvanceY, int hp, int armor,
+		int allegiance, bool isJustDestroyed, int damage, int range) :
+	AEntity(appearence, x, y, speedX, speedY, frameAdvanceX, frameAdvanceY,
+			hp, armor, allegiance, isJustDestroyed), _damage(damage), _range(range)
 {
-    std::cout << this->getX() + 1 << std::endl;
-    return;
+	return;
 }
 
 Projectile::~Projectile(void)
 {
-    return;
+	return;
 }
 
 Projectile &Projectile::operator=(Projectile const & rhs)
 {
-    AEntity::operator=(rhs);
-    this->setDamage(rhs.getDamage());
-    this->setRange(rhs.getRange());
-    return (*this);
+	AEntity::operator=(rhs);
+	this->setDamage(rhs.getDamage());
+	this->setRange(rhs.getRange());
+	return (*this);
 }
 
 void            Projectile::colisionEffect(AEntity ** entity) {
-    AEntity *ptr;
+	AEntity *ptr;
 
-    ptr = *entity;
-/*  ptr->getNext()->setPrev(ptr->getPrev());
-    ptr->getPrev()->setNext(ptr->getNext());
-    delete entity;*/
-    ptr->setHP(ptr->getHP() - CALC_DAMAGE(this->getDamage(), this->getArmor()));
-    if (ptr->getHP() <= 0)
-        ptr->setIsJustDestroyed(true);
-    this->setIsJustDestroyed(true);
-    return;
+	ptr = *entity;
+	/*  ptr->getNext()->setPrev(ptr->getPrev());
+		ptr->getPrev()->setNext(ptr->getNext());
+		delete entity;*/
+	ptr->setHP(ptr->getHP() - CALC_DAMAGE(this->getDamage(), this->getArmor()));
+	if (ptr->getHP() <= 0)
+		ptr->setIsJustDestroyed(true);
+	this->setIsJustDestroyed(true);
+	return;
 }
 
 Projectile	*Projectile::factory(void) {
@@ -68,16 +67,19 @@ Projectile	*Projectile::factory(void) {
 }
 
 void            Projectile::move(void) {
-    int frame_advancementX = this->getFrameAdvanceX() + this->getSpeedX();
-    int frame_advancementY = this->getFrameAdvanceY() + this->getSpeedY();
 
-    if (ABS(frame_advancementX) >= this->getFrameRate()) {
-        this->setX(this->getX() + SIGNE(frame_advancementX));
-    }
-    if (ABS(frame_advancementY) >= this->getFrameRate()) {
-        this->setY(this->getY() + SIGNE(frame_advancementY));
-    }
-    return;
+	this->setFrameAdvanceX(this->getFrameAdvanceX() + this->getSpeedX());
+	this->setFrameAdvanceY(this->getFrameAdvanceY() + this->getSpeedY());
+
+	if (ABS(this->getFrameAdvanceX()) >= FRAME_RATE) {
+		this->setX(this->getX() + (getFrameAdvanceX() % FRAME_RATE));
+		this->setFrameAdvanceX(this->getFrameAdvanceX() % FRAME_RATE);
+	}
+	if (ABS(this->getFrameAdvanceY()) >= FRAME_RATE) {
+		this->setY(this->getY() + (getFrameAdvanceY() % FRAME_RATE));
+		this->setFrameAdvanceY(this->getFrameAdvanceY() % FRAME_RATE);
+	}
+	return;
 }
 
 int Projectile::getDamage(void) const
@@ -92,10 +94,10 @@ int Projectile::getRange(void) const
 
 void Projectile::setDamage(int const value)
 {
-    this->_damage = value;
+	this->_damage = value;
 }
 
 void Projectile::setRange(int const value)
 {
-    this->_range = value;
+	this->_range = value;
 }
