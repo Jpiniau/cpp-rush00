@@ -6,12 +6,13 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:36:59 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 19:44:30 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 19:46:19 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Frame.hpp" 
 #include <iostream>
+#include <ctime>
 
 Frame::Frame(void) {
 	WINDOW		*win;
@@ -23,8 +24,9 @@ Frame::Frame(void) {
 	start_color();
 	init_pair(1, COLOR_GREEN, COLOR_BLACK);
 	init_pair(2, COLOR_RED, COLOR_BLACK);
+	init_pair(3, COLOR_WHITE, COLOR_BLACK);
 
-	win = newwin(50, 75, 0, 0);
+	win = newwin(52, 75, 0, 0);
 	nodelay(win, TRUE);
 	keypad(win, TRUE);
 	refresh();
@@ -34,6 +36,7 @@ Frame::Frame(void) {
 	BS = new BaseShip();
 
 	_ptr = BS;
+	_start = clock();
 	_endOfGame = 0;
     return;
 }
@@ -54,6 +57,16 @@ Frame &         Frame::operator=(Frame const & rhs) {
 
 void            Frame::generateFrame(void) {
 	WINDOW			*win;
+	double			time = clock() - _start;
+	static int		count = 0;
+	std::string		strScore = "";
+
+	if(time > (double)(1 * CLOCKS_PER_SEC))
+	{
+		_start = clock();
+    	count++;
+    }
+	strScore = std::to_string(count);
 
 	win	= _win;
 
@@ -69,6 +82,10 @@ void            Frame::generateFrame(void) {
 			wattron(win, COLOR_PAIR(2));
 		mvwprintw(win, ptr->getY(), ptr->getX(), ptr->getAppearance().c_str());
 	}
+	wattron(win, COLOR_PAIR(3));
+	mvwprintw(win, 51, 10, "SCORE :");
+	mvwprintw(win, 51, 17, strScore.c_str());
+	mvwprintw(win, 51, 20, " ");
 	wrefresh(win);
 }
 
@@ -161,6 +178,7 @@ void            Frame::updateAll(void) {
 AEntity const & Frame::getPtr(void) const 		{	return (*(this->_ptr));}
 WINDOW * 		Frame::getWin(void) const 		{	return (this->_win);}
 int				Frame::getEndOfGame(void) const {	return (this->_endOfGame);}
+int				Frame::getStart(void) const		{	return (this->_start);}
 
 //setteurs
 void            Frame::setPtr(AEntity const & entity) {
@@ -173,4 +191,8 @@ void			Frame::setWin(WINDOW * win) {
 
 void			Frame::setEndOfGame(int i) {
 	this->_endOfGame = i;
+}
+
+void			Frame::setStart(int i) {
+	this->_start = i;
 }

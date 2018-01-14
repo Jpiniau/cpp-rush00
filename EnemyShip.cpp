@@ -6,21 +6,21 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/14 19:15:58 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 19:41:20 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 20:00:21 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "EnemyShip.hpp"
 #include <iostream>
 
-EnemyShip::EnemyShip(void) : AEntity("<", 5, 5, 0, 0, 0, 0, 50, 5, 1, false), AEnemy(), ASpaceShip()
+EnemyShip::EnemyShip(void) : AEntity("<", 5, 5, 0, 0, 0, 0, 50, 5, 1, false), AEnemy(), ASpaceShip(), _canonCharge(0), _canonChargeLevel(4)
 {
 	this->setRandSpeed();
 	this->setRandCoord();
 	return;
 }
 
-EnemyShip::EnemyShip(EnemyShip const & src) : AEntity(src),  AEnemy(src), ASpaceShip(src) 
+EnemyShip::EnemyShip(EnemyShip const & src) : AEntity(src), AEnemy(src), ASpaceShip(src) , _canonCharge(0), _canonChargeLevel(4) 
 {
 	*this = src;
 }
@@ -91,6 +91,13 @@ void		EnemyShip::move(void)
 		this->setY(this->getY() + SIGNE(getFrameAdvanceY()));
 		this->setFrameAdvanceY(this->getFrameAdvanceY() % FRAME_RATE);
 	}
+    if (this->getCanonChargeLevel() >= this->getCanonCharge()) {
+        this->setCanonChargeLevel(0);
+        this->shoot();
+    }
+    else {
+        this->setCanonChargeLevel(this->getCanonChargeLevel() + 1);
+    }
 	return;
 }
 
@@ -115,7 +122,17 @@ void            EnemyShip::setRandCoord(void) {
     this->setX(74);
 }
 
-
 void		EnemyShip::destructor(void){
 	EnemyShip::~EnemyShip();
+}
+
+int         EnemyShip::getCanonCharge(void)         {   return (this->_canonCharge);}
+int         EnemyShip::getCanonChargeLevel(void)    {   return (this->_canonChargeLevel);}
+
+void        EnemyShip::setCanonCharge(int val){
+    this->_canonCharge = val;
+}
+
+void        EnemyShip::setCanonChargeLevel(int val){
+    this->_canonChargeLevel = val;
 }

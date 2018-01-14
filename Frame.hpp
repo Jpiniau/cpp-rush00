@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:36:53 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 19:41:13 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 19:46:39 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Frame {
     AEntity         *_ptr;
     WINDOW			*_win;
 	int				_endOfGame;
+	int				_start;
 
 
     public:
@@ -44,11 +45,13 @@ class Frame {
     AEntity const & getPtr(void) const;
     WINDOW *		getWin(void) const;
 	int				getEndOfGame(void) const;
+	int				getStart(void) const;
 
     //setteurs
     void            setPtr(AEntity const & entity);
     void            setWin(WINDOW * win);
 	void			setEndOfGame(int i);
+	void			setStart(int i);
 };
 
 

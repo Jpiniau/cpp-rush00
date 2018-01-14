@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/14 19:15:56 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 19:38:33 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 19:50:34 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,15 @@ class EnemyShip : public AEntity, public AEnemy, public ASpaceShip {
 		void	    setRandSpeed(void);//
 		void	    setRandCoord(void);//
 
+        int         getCanonCharge(void);
+        int         getCanonChargeLevel(void);
+
+        void        setCanonCharge(int val);
+        void        setCanonChargeLevel(int val);
+
 	private:
+        int         _canonCharge;
+        int         _canonChargeLevel;
 };
 
 #endif
