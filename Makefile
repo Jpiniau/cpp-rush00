@@ -1,4 +1,4 @@
-NAME = test
+NAME = ft_retro
 
 FLAGS = -Wall -Werror -Wextra
 
@@ -26,10 +26,10 @@ OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 all: $(NAME)
 
 $(NAME) : $(OBJ)
-	g++ $(FLAGS) -o $@ $^ -lncurses
+	clang++ $(FLAGS) -o $@ $^ -lncurses
 
 $(OBJ_PATH)%.o : $(SRC_PATH)%.cpp
-	g++ $(FLAGS) -o $@ -c $<
+	clang++ $(FLAGS) -o $@ -c $<
 
 clean :
 	rm -rf $(OBJ_PATH)*.o
