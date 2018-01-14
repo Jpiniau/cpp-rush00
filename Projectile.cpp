@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:23:29 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/14 17:11:45 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/14 17:47:56 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void            Projectile::colisionEffect(AEntity ** entity) {
 	AEntity *ptr;
 
 	ptr = *entity;
+	if (ptr->getAllegiance() == this->getAllegiance())
+		return;
 	/*  ptr->getNext()->setPrev(ptr->getPrev());
 		ptr->getPrev()->setNext(ptr->getNext());
 		delete entity;*/
