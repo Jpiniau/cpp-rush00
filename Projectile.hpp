@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:08:54 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 19:43:13 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 10:24:10 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Projectile : public AEntity
 	public :
 		Projectile(void);
 		Projectile(Projectile const & src);
-		Projectile(char appearence, int x, int y, int speedX, int speedY,
+		Projectile(std::string appearence, int x, int y, int speedX, int speedY,
 					int frameAdvanceX, int frameAdvanceY, int hp, int armor,
 					int allegiance, bool isJustDestroyed, int damage, int range);
 		Projectile(int damage, int range);

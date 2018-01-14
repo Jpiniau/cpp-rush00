@@ -6,24 +6,27 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:33:50 by jpiniau           #+#    #+#             */
-/*   Updated: 2018/01/13 19:52:58 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 11:02:28 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BaseShip.hpp"
 
-BaseShip::BaseShip(void) : ASpaceShip(), APlayer()
+BaseShip::BaseShip(void) : ASpaceShip(), APlayer(), AEntity(">", 5, 5, 0, 0, 0, 0, 50, 5, 0, false)
 {
 	return;
 }
 
-BaseShip::BaseShip(BaseShip const & src) : ASpaceShip(src), APlayer(src)
+BaseShip::BaseShip(BaseShip const & src) : ASpaceShip(src), APlayer(src), AEntity(src)
 {
 	*this = src;
 }
 
 BaseShip::~BaseShip(void)
 {
+	AEntity::~AEntity();
+	ASpaceShip::~ASpaceShip();
+	APlayer::~APlayer();
 	return;
 }
 
@@ -48,7 +51,7 @@ void	BaseShip::shoot(void)
 	while (list->getNext())
 		list = list->getNext();
 
-	proj = new Projectile('-', this->getX() + 1, this->getY(), 5, 0, 0, 0, 0, 0, 0, 0, 10, 20);
+	proj = new Projectile("-", this->getX() + 1, this->getY(), 5, 0, 0, 0, 0, 0, 0, 0, 10, 20);
 
 	list->setNext(proj);
 	proj->setPrev(list);

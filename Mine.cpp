@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:25:53 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 20:06:59 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 10:26:16 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <cstdlib>
 #include <ctime>
 
-Mine::Mine(void) : AEntity('@', 45, 45, 2, 2, 0, 0, 50, 2, 2, false), AEnemy() {
+Mine::Mine(void) : AEntity("@", 45, 45, 2, 2, 0, 0, 50, 2, 2, false), AEnemy() {
     return;
 }
 

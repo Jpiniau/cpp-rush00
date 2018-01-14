@@ -6,16 +6,18 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:55:58 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 19:39:43 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 10:25:19 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AENTITY_HPP
 # define AENTITY_HPP
 
+#include <string>
+
 class   AEntity {
     private:
-    char                _appearance;
+	std::string			_appearance;
     int                 _x;
     int                 _y;
     int                 _speedX;
@@ -36,7 +38,7 @@ class   AEntity {
     static const int    _frameRate;
     AEntity(void);
     AEntity(AEntity const &src);
-    AEntity(char appearance, int x, int y, int speedX, int speedY, 
+    AEntity(std::string appearance, int x, int y, int speedX, int speedY, 
             int frameAdvanceX, int frameAdvanceY, int hp, int armor,
             int allegiance, bool isJustDestroyed);
     ~AEntity(void);
@@ -51,7 +53,7 @@ class   AEntity {
     virtual AEntity *factory(void) = 0;
 
     //getteurs
-    char            getAppearance(void) const;
+	std::string     getAppearance(void) const;
     int             getX(void) const;
     int             getY(void) const;
     int             getSpeedX(void) const;
@@ -67,7 +69,7 @@ class   AEntity {
     AEntity         *getPrev(void) const;
 
     //setteurs
-    void            setAppearance(char const symbol);
+    void            setAppearance(std::string const symbol);
     void            setX(int const value);
     void            setY(int const value);
     void            setSpeedX(int const value);

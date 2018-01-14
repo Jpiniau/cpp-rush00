@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:55:52 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 19:29:40 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 10:24:43 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ AEntity::AEntity(AEntity const &src)
     *this = src;
 }
 
-AEntity::AEntity(char appearance, int x, int y, int speedX, int speedY,
+AEntity::AEntity(std::string appearance, int x, int y, int speedX, int speedY,
                  int frameAdvanceX, int frameAdvanceY, int hp, int armor,
                  int allegiance, bool isJustDestroyed) : _appearance(appearance),
                                                          _x(x), _y(y), _speedX(speedX), _speedY(speedY),
@@ -65,7 +65,7 @@ AEntity     *AEntity::colideWith(void) {
 }
 
 //getteurs
-char AEntity::getAppearance(void) const         { return (this->_appearance); }
+std::string AEntity::getAppearance(void) const	{ return (this->_appearance); }
 int AEntity::getX(void) const                   { return (this->_x); }
 int AEntity::getY(void) const                   { return (this->_y); }
 int AEntity::getSpeedX(void) const              { return (this->_speedX); }
@@ -81,7 +81,7 @@ AEntity *AEntity::getNext(void) const           { return (this->_next);}
 AEntity *AEntity::getPrev(void) const           { return (this->_prev);}
 
 //setteurs
-void AEntity::setAppearance(char const symbol)
+void AEntity::setAppearance(std::string const symbol)
 {
     this->_appearance = symbol;
 }

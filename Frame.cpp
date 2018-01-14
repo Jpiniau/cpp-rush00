@@ -6,14 +6,15 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:36:59 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/13 20:29:58 by vnoon            ###   ########.fr       */
+/*   Updated: 2018/01/14 10:51:53 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Frame.hpp" 
 
 Frame::Frame(void) {
-	WINDOW	*win;
+	WINDOW		*win;
+	BaseShip	*BS;
 
 	initscr();
 	noecho();
@@ -28,6 +29,9 @@ Frame::Frame(void) {
 	
 	_win = win;
 
+	BS = new BaseShip();
+
+	_ptr = BS;
     return;
 }
 
@@ -58,7 +62,7 @@ void            Frame::generateFrame(void) {
 			wattron(win, COLOR_PAIR(1));
 		else
 			wattron(win, COLOR_PAIR(2));
-		mvwprintw(win, ptr.getY(), ptr.getX(), ptr.getAppearance());
+		mvwprintw(win, ptr.getY(), ptr.getX(), ptr.getAppearance().c_str());
 	}
 	wrefresh(win);
 }
