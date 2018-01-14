@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:36:59 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 18:06:55 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/14 18:47:30 by jpiniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,20 @@ void            Frame::updateAll(void) {
 	
 	i = -1;
 	while (++i < 4)
+	{
 		newCH[i] = wgetch(this->getWin());
+		if (newCH[i] == 27)
+		{
+			_endOfGame = 1;
+			ptr = this->_ptr->getNext();
+				for (; ptr != NULL; ptr = ptr->getNext()) {
+					ptr->getPrev()->destructor();
+				}
+				_ptr = NULL;
+				_endOfGame = 1;
+				return;
+		}
+	}
 	ptr->setCH(newCH, 4);
 	for (; ptr != NULL; ptr = ptr->getNext())
 		ptr->move();
