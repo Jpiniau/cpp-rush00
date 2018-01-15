@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Meteor.cpp                                         :+:      :+:    :+:   */
+/*   EnemyShip.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/13 14:12:28 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 19:39:05 by vnoon            ###   ########.fr       */
+/*   Created: 2018/01/14 19:15:58 by vnoon             #+#    #+#             */
+/*   Updated: 2018/01/14 20:00:21 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Meteor.hpp"
-#include <cstdlib>
-#include <ctime>
+#include "EnemyShip.hpp"
+#include <iostream>
 
-Meteor::Meteor(void) : AEntity("#", 75, 45, 0, 0, 0, 0, 50, 2, 2, false), AEnemy() {
+EnemyShip::EnemyShip(void) : AEntity("<", 5, 5, 0, 0, 0, 0, 50, 5, 1, false), AEnemy(), ASpaceShip(), _canonCharge(0), _canonChargeLevel(4)
+{
 	this->setRandSpeed();
 	this->setRandCoord();
 	return;
 }
 
-Meteor::Meteor(int x, int y) : AEntity("#", x, y, 2, 2, 0, 0, 50, 2, 2, false), AEnemy() {
-	this->setRandSpeed();
-    return;
+EnemyShip::EnemyShip(EnemyShip const & src) : AEntity(src), AEnemy(src), ASpaceShip(src) , _canonCharge(0), _canonChargeLevel(4) 
+{
+	*this = src;
 }
 
-Meteor::Meteor(Meteor const & src) : AEntity(src) {
-    *this = src;
+EnemyShip::~EnemyShip(void)
+{
+	AEntity::~AEntity();
+	ASpaceShip::~ASpaceShip();
+	AEnemy::~AEnemy();
+	return;
 }
 
-Meteor::~Meteor(void) {
-    AEntity::~AEntity();
-}
-
-void            Meteor::colisionEffect(AEntity ** entity) {
+void            EnemyShip::colisionEffect(AEntity ** entity) {
     AEntity *ptr;
 
     ptr = *entity;
@@ -47,7 +47,36 @@ void            Meteor::colisionEffect(AEntity ** entity) {
     return;
 }
 
-void            Meteor::move(void) {
+void	EnemyShip::shoot(void)
+{
+	Projectile	*proj;
+	AEntity		*list;
+
+	list = this;
+	while (list->getNext())
+		list = list->getNext();
+	//std::cout << this->getX() + 1 << std::endl;
+	proj = new Projectile("-", this->getX() - 1, this->getY(), -10, 0, 0, 0, 0, 0, 1, false, 2, 30);
+	list->setNext(proj);
+	proj->setPrev(list);
+	proj->setNext(NULL);
+}
+
+EnemyShip &	EnemyShip::operator=(EnemyShip const & rhs)
+{
+	AEntity::operator=(rhs);
+	return (*this);
+}
+
+EnemyShip	*EnemyShip::factory(void) {
+	EnemyShip *new_EnemyShip;
+
+	new_EnemyShip = new EnemyShip();
+	return (new_EnemyShip);
+}
+
+void		EnemyShip::move(void)
+{
 	this->setFrameAdvanceX(this->getFrameAdvanceX() + this->getSpeedX());
 	this->setFrameAdvanceY(this->getFrameAdvanceY() + this->getSpeedY());
 	if (ABS(this->getFrameAdvanceX()) >= FRAME_RATE) {
@@ -62,20 +91,21 @@ void            Meteor::move(void) {
 		this->setY(this->getY() + SIGNE(getFrameAdvanceY()));
 		this->setFrameAdvanceY(this->getFrameAdvanceY() % FRAME_RATE);
 	}
+    if (this->getCanonChargeLevel() >= this->getCanonCharge()) {
+        this->setCanonChargeLevel(0);
+        this->shoot();
+    }
+    else {
+        this->setCanonChargeLevel(this->getCanonChargeLevel() + 1);
+    }
+	return;
 }
 
-Meteor	*Meteor::factory(void) {
-	Meteor *new_Meteor;
-
-	new_Meteor = new Meteor();
-	return (new_Meteor);
-}
-
-void            Meteor::patern(void) {
+void            EnemyShip::patern(void) {
     return;
 }
 
-void            Meteor::setRandSpeed(void) {
+void            EnemyShip::setRandSpeed(void) {
     srand(time(NULL));
     static int salt = rand() + 7;
     int     val = ((rand() + salt++) % 4) + 1;
@@ -84,7 +114,7 @@ void            Meteor::setRandSpeed(void) {
     this->setSpeedY(0);
 }
 
-void            Meteor::setRandCoord(void) {
+void            EnemyShip::setRandCoord(void) {
     srand(time(NULL));
     static int salt = rand() + 7;
     int     val = (rand() + salt++) % 40;
@@ -92,12 +122,17 @@ void            Meteor::setRandCoord(void) {
     this->setX(74);
 }
 
-void	Meteor::destructor(void) {
-	Meteor::~Meteor();
+void		EnemyShip::destructor(void){
+	EnemyShip::~EnemyShip();
 }
 
-Meteor &	Meteor::operator=(Meteor const &rhs)
-{
-	AEntity::operator=(rhs);
-	return (*this);
+int         EnemyShip::getCanonCharge(void)         {   return (this->_canonCharge);}
+int         EnemyShip::getCanonChargeLevel(void)    {   return (this->_canonChargeLevel);}
+
+void        EnemyShip::setCanonCharge(int val){
+    this->_canonCharge = val;
+}
+
+void        EnemyShip::setCanonChargeLevel(int val){
+    this->_canonChargeLevel = val;
 }

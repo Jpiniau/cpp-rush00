@@ -6,7 +6,7 @@
 /*   By: vnoon <vnoon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:36:53 by vnoon             #+#    #+#             */
-/*   Updated: 2018/01/14 19:21:52 by jpiniau          ###   ########.fr       */
+/*   Updated: 2018/01/14 19:46:39 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "Mine.hpp"
 #include "Meteor.hpp"
 #include "BaseShip.hpp"
+#include "EnemyShip.hpp"
 #include <cstdlib>
 #include <ctime>
 #include <ncurses.h>

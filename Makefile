@@ -13,7 +13,8 @@ SRC_NAME =	main.cpp\
 			Frame.cpp\
 			Meteor.cpp\
 			Mine.cpp\
-			Projectile.cpp
+			Projectile.cpp \
+			EnemyShip.cpp
 
 SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
 
